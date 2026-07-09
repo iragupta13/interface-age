@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Interface Age</title>
+    <meta
+      name="description"
+      content="A detailed field guide to neurotech: BCIs, neuromodulation, sensory prosthetics, key companies, market map, milestones, bottlenecks, and the long road ahead."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Average&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=14" />
+  </head>
+  <body>
+    <div class="site-grain" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+      <div class="site-header__inner">
+        <p class="site-kicker">A living field guide to neurotechnology</p>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1>The Interface Age</h1>
+            <p class="hero-dek">
+              A deep guide to brain-computer interfaces, neuromodulation,
+              sensory restoration, neural data, and the companies trying to
+              build real products instead of just spectacular demos.
+            </p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="brain-cloud">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p>signals → decoding → stimulation → adaptation</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="chapter-rail" aria-label="Table of contents">
+      <div class="chapter-rail__inner">
+        <a href="#contents">Contents</a>
+        <a href="#state-now">State</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#concepts">Concepts</a>
+        <a href="#modalities">Modalities</a>
+        <a href="#market-map">Landscape</a>
+        <a href="#use-cases" class="chapter-rail__minor">Use Cases</a>
+        <a href="#players">Players</a>
+        <a href="#research" class="chapter-rail__minor">Research</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#bottlenecks">Bottlenecks</a>
+        <a href="#next-steps" class="chapter-rail__minor">Next Steps</a>
+        <a href="#endgame">Endgame</a>
+        <a href="#sources">Sources</a>
+      </div>
+    </nav>
+
+    <main class="document">
+      <article class="article-shell">
+        <section class="chapter chapter--contents" id="contents">
+          <div class="chapter-heading">
+            <p class="chapter-number">00</p>
+            <h2>Contents</h2>
+          </div>
+          <div class="contents-layout">
+            <div class="contents-list">
+              <a href="#state-now">01 State of the Field</a>
+              <a href="#how-it-works">02 How Neurotech Actually Works</a>
+              <a href="#concepts">03 Important Concepts</a>
+              <a href="#modalities">04 Interface Modalities</a>
+              <a href="#market-map">05 Field Landscape</a>
+              <a href="#use-cases">06 Where It Is Useful First</a>
+              <a href="#players">07 Company Tracker</a>
+              <a href="#research">08 What the Research Actually Shows</a>
+              <a href="#timeline">09 Timeline</a>
+              <a href="#bottlenecks">10 What Is Still Hard</a>
+              <a href="#next-steps">11 Likely Next Steps</a>
+              <a href="#endgame">12 The Endgame</a>
+              <a href="#sources">13 Sources</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="state-now">
+          <div class="chapter-heading">
+            <p class="chapter-number">01</p>
+            <h2>State of the Field</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="lead">
+                Neurotech is not one thing. It is a family of technologies that
+                read neural activity, write back to nervous tissue, or close the
+                loop between sensing and stimulation.
+              </p>
+              <p>
+                In 2026 the most honest summary is this: the field has
+                definitely crossed the threshold from pure lab spectacle into
+                early product reality, but it is still far from mature. We can
+                already get useful outputs from the nervous system and can
+                already change symptoms or behavior through stimulation in real
+                humans<sup class="cite-inline"><a href="#src-cala-home">[1]</a></sup><sup class="cite-inline"><a href="#src-synchron-research">[2]</a></sup><sup class="cite-inline"><a href="#src-science-prima">[3]</a></sup>.
+              </p>
+              <p>
+                What we do not yet have is a settled, mass-deployable neural
+                product stack. The frontier is no longer just whether signals or
+                therapies are possible. It is whether they can be durable, safe,
+                trainable, reimbursable, maintainable, and trusted over years.
+              </p>
+              <div class="signal-strip" id="signal-strip"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--status" aria-hidden="true">
+                <div class="status-rings">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="status-beams">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="how-it-works">
+          <div class="chapter-heading">
+            <p class="chapter-number">02</p>
+            <h2>How Neurotech Actually Works</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="lead">
+                A useful shortcut is to think in three verbs:
+                <strong>read</strong>, <strong>write</strong>, and
+                <strong>close the loop</strong>.
+              </p>
+              <div class="primer-list" id="primer-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--stack" aria-hidden="true">
+                <div class="stack-visual">
+                  <div>Biology</div>
+                  <div>Interface</div>
+                  <div>Signal Processing</div>
+                  <div>Models</div>
+                  <div>Product UX</div>
+                  <div>Support & Care</div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="concepts">
+          <div class="chapter-heading">
+            <p class="chapter-number">03</p>
+            <h2>Important Concepts</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <div class="essay-list" id="concept-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--questions" aria-hidden="true">
+                <div class="question-grid">
+                  <span>signal</span>
+                  <span>job</span>
+                  <span>workflow</span>
+                  <span>failure</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="modalities">
+          <div class="chapter-heading">
+            <p class="chapter-number">04</p>
+            <h2>Interface Modalities</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="lead">
+                The central tradeoff in neurotech is simple to say and hard to
+                solve: the closer you get to neurons, the richer the information
+                or control can become, but the more biology and procedure push
+                back.
+              </p>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--burden" aria-hidden="true">
+                <div class="burden-ladder">
+                  <div>Non-invasive wearables</div>
+                  <div>Ultrasound windows / research systems</div>
+                  <div>Surface cortical arrays</div>
+                  <div>Endovascular implants</div>
+                  <div>Penetrating intracortical systems</div>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="table-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Approach</th>
+                  <th>What it touches</th>
+                  <th>Main strength</th>
+                  <th>Main weakness</th>
+                  <th>Representative names</th>
+                </tr>
+              </thead>
+              <tbody id="comparison-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="market-map">
+          <div class="chapter-heading">
+            <p class="chapter-number">05</p>
+            <h2>Field Landscape</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="lead">
+                A more useful way to read neurotech is not as one winner-take-all race,
+                but as a landscape of <strong>different interface paths</strong> serving
+                <strong>different first jobs</strong>.
+              </p>
+              <p>
+                Instead of a matrix, this version reads as a set of pathways.
+                Start at the lowest-burden interface paths and move toward the
+                highest-burden ones. Inside each path, companies are grouped by
+                their first real job: assistive, therapeutic, sensory, or
+                infrastructure.
+              </p>
+              <p>
+                Companies sharing an interface path are often closer procedural
+                cousins than the broad “neurotech” label makes obvious, even
+                when their markets look different from the outside.
+              </p>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--pathways" aria-hidden="true">
+                <div class="pathway-trace">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="market-visual">
+            <div class="market-map" id="market-map-plot"></div>
+            <div class="market-legend" id="market-legend"></div>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="use-cases">
+          <div class="chapter-heading">
+            <p class="chapter-number">06</p>
+            <h2>Where Neurotech Is Useful First</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="chapter-intro">
+                The best first products are not the broadest products. They are
+                usually the ones with a painful, clearly defined job to be done
+                and a way to measure whether the user is genuinely better off.
+              </p>
+              <div class="essay-list" id="usecase-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--wedges" aria-hidden="true">
+                <div class="wedge-bars">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter" id="players">
+          <div class="chapter-heading">
+            <p class="chapter-number">07</p>
+            <h2>Company Tracker</h2>
+          </div>
+          <p class="chapter-intro">
+            This tracker focuses on companies with enough public signal to
+            compare seriously. That includes frontier BCI companies, therapeutic
+            neuromodulation players, sensory prosthetic builders, and
+            infrastructure layers. It does not try to catalog every tiny startup
+            or every stealth rumor.
+          </p>
+          <div class="filter-row" id="filters"></div>
+          <p class="filter-explainer" id="filter-explainer" aria-live="polite"></p>
+          <div class="player-index" id="player-index"></div>
+        </section>
+
+        <section class="chapter chapter--split chapter--research" id="research">
+          <div class="chapter-heading">
+            <p class="chapter-number">08</p>
+            <h2>What the Research Actually Shows</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="chapter-intro">
+                This section is the paper trail underneath the company tracker.
+                The goal is not to drown the page in citations. It is to show
+                which claims are already supported in humans, which ideas are
+                accelerating quickly, and which parts of the field are still
+                more thesis than durable evidence.
+              </p>
+              <p class="chapter-intro">
+                Right now the strongest evidence sits in closed-loop therapy and
+                communication restoration, while the weakest evidence sits in
+                broad consumer thought decoding and ambitious non-invasive
+                claims without dense human outcome data.
+              </p>
+              <div class="research-list" id="research-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--evidence" aria-hidden="true">
+                <div class="evidence-ladder">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="timeline">
+          <div class="chapter-heading">
+            <p class="chapter-number">09</p>
+            <h2>Timeline</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <div class="timeline-list" id="timeline-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--timeline" aria-hidden="true">
+                <div class="timeline-arc">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="bottlenecks">
+          <div class="chapter-heading">
+            <p class="chapter-number">10</p>
+            <h2>What Is Still Hard</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <div class="essay-list essay-list--compact" id="bottleneck-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--bottleneck" aria-hidden="true">
+                <div class="bottleneck-pulse">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="next-steps">
+          <div class="chapter-heading">
+            <p class="chapter-number">11</p>
+            <h2>Likely Next Steps</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <div class="essay-list essay-list--compact" id="next-step-list"></div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--forecast" aria-hidden="true">
+                <div class="forecast-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--split" id="endgame">
+          <div class="chapter-heading">
+            <p class="chapter-number">12</p>
+            <h2>The Endgame</h2>
+          </div>
+          <div class="chapter-layout">
+            <div class="chapter-copy">
+              <p class="lead">
+                The deepest point of neurotech is not to make minds legible for
+                entertainment. It is to restore function, reduce suffering, and
+                eventually create trustworthy interfaces between biology and
+                software.
+              </p>
+              <p>
+                The real tension is that the same tools that could make severe
+                disability less isolating could also turn cognition, mood, or
+                intent into product surfaces. That is why governance cannot be
+                an afterthought.
+              </p>
+              <div class="endgame-columns">
+                <div>
+                  <h3>The practical goal</h3>
+                  <p>
+                    Restore communication, movement, sensory function, or
+                    disease control so effectively that some of today’s hardest
+                    neurological barriers stop being permanent.
+                  </p>
+                </div>
+                <div>
+                  <h3>The platform goal</h3>
+                  <p>
+                    Build neural systems that work outside the lab, survive
+                    time, integrate into real care, and remain usable even as
+                    companies, models, and hardware generations change.
+                  </p>
+                </div>
+                <div>
+                  <h3>The governance goal</h3>
+                  <p>
+                    Prevent neural data from becoming the most intimate and
+                    least protected commercial data layer ever created.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <aside class="chapter-aside">
+              <div class="chapter-visual chapter-visual--tension" aria-hidden="true">
+                <div class="tension-orbit">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="chapter chapter--sources" id="sources">
+          <div class="chapter-heading">
+            <p class="chapter-number">13</p>
+            <h2>Sources</h2>
+          </div>
+          <p class="chapter-intro">
+            Company websites, published papers, and reporting used throughout
+            the guide.
+          </p>
+          <div class="sources-list" id="sources-list"></div>
+        </section>
+      </article>
+    </main>
+
+    <dialog class="company-modal" id="company-modal">
+      <form method="dialog" class="company-modal__close-row">
+        <button aria-label="Close dossier" class="company-modal__close">Close</button>
+      </form>
+      <div class="company-modal__content" id="company-modal-content"></div>
+    </dialog>
+
+    <script src="app.js?v=14"></script>
+  </body>
+</html>
