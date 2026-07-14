@@ -2148,8 +2148,11 @@ function renderResearch() {
   renderList("#research-list", researchItems, (item) => `
     <article class="research-track">
       <div class="research-track__head">
-        <p class="research-track__kicker">${item.kicker}</p>
-        <h3>${item.title}</h3>
+        <div>
+          <p class="research-track__kicker">${item.kicker}</p>
+          <h3>${item.title}</h3>
+        </div>
+        <span class="research-track__count">${String(item.papers.length).padStart(2, "0")} anchor ${item.papers.length === 1 ? "paper" : "papers"}</span>
       </div>
       <div class="research-track__body">
         ${item.body}

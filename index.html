@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Average&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=19" />
+    <link rel="stylesheet" href="styles.css?v=20" />
   </head>
   <body>
     <div class="site-grain" aria-hidden="true"></div>
@@ -121,13 +121,16 @@
               <div class="primer-list" id="primer-list"></div>
             </div>
             <aside class="chapter-aside">
-              <figure class="chapter-scene chapter-scene--dark" data-scene="closed-loop">
-                <img src="assets/visuals/signal-loop.jpg" alt="Sculptural closed-loop neural interface carrying a signal from sensing through decoding and back to stimulation" loading="lazy" decoding="async" />
-                <figcaption>
-                  <span>Closed loop</span>
-                  <strong>Read · decode · write · adapt</strong>
-                </figcaption>
-              </figure>
+              <div class="chapter-scene chapter-scene--diagram loop-diagram" role="img" aria-label="A closed-loop neural system reads activity, decodes a state or intent, writes an intervention, measures the outcome, and adapts">
+                <div class="diagram-label">Closed-loop system</div>
+                <ol class="loop-diagram__steps">
+                  <li><span>01</span><div><strong>Read</strong><small>Sense neural activity</small></div></li>
+                  <li><span>02</span><div><strong>Decode</strong><small>Infer state or intent</small></div></li>
+                  <li><span>03</span><div><strong>Write</strong><small>Stimulate or act</small></div></li>
+                  <li><span>04</span><div><strong>Measure</strong><small>Observe the outcome</small></div></li>
+                </ol>
+                <div class="loop-diagram__return"><span>↺</span> Outcome updates the next decision</div>
+              </div>
             </aside>
           </div>
         </section>
@@ -159,13 +162,18 @@
               </p>
             </div>
             <aside class="chapter-aside">
-              <figure class="chapter-scene chapter-scene--light" data-scene="modalities">
-                <img src="assets/visuals/interface-spectrum.jpg" alt="Product-studio arrangement of non-invasive, peripheral, cortical, vascular, and intracortical neural interfaces" loading="lazy" decoding="async" />
-                <figcaption>
-                  <span>Interface spectrum</span>
-                  <strong>Access rises. So does biological burden.</strong>
-                </figcaption>
-              </figure>
+              <div class="chapter-scene chapter-scene--diagram modality-diagram" role="img" aria-label="Five neural interface routes arranged from lower to higher signal access and procedural burden">
+                <div class="diagram-label">Interface spectrum</div>
+                <div class="modality-diagram__axis"><span>Lower burden</span><span>Richer access →</span></div>
+                <div class="modality-diagram__rows">
+                  <div style="--reach: 20%"><span>Non-invasive</span><i></i><small>scalp / outside body</small></div>
+                  <div style="--reach: 36%"><span>Peripheral</span><i></i><small>nerves / wearables</small></div>
+                  <div style="--reach: 58%"><span>Endovascular</span><i></i><small>inside blood vessel</small></div>
+                  <div style="--reach: 72%"><span>Cortical surface</span><i></i><small>on the cortex</small></div>
+                  <div style="--reach: 94%"><span>Intracortical</span><i></i><small>within neural tissue</small></div>
+                </div>
+                <p class="modality-diagram__note">Signal access and biological burden usually rise together.</p>
+              </div>
             </aside>
           </div>
           <div class="table-wrap">
@@ -255,13 +263,13 @@
           </div>
         </section>
 
-        <section class="chapter chapter--split chapter--research" id="research">
+        <section class="chapter chapter--wide chapter--research" id="research">
           <div class="chapter-heading">
             <p class="chapter-number">07</p>
             <h2>What the Research Actually Shows</h2>
           </div>
-          <div class="chapter-layout">
-            <div class="chapter-copy">
+          <div class="research-intro-layout">
+            <div class="research-intro-copy">
               <p class="chapter-intro">
                 This section is the paper trail underneath the company tracker.
                 The goal is not to drown the page in citations. It is to show
@@ -275,18 +283,23 @@
                 broad consumer thought decoding and ambitious non-invasive
                 claims without dense human outcome data.
               </p>
-              <div class="research-list" id="research-list"></div>
             </div>
-            <aside class="chapter-aside">
-              <figure class="chapter-scene chapter-scene--dark" data-scene="evidence">
-                <img src="assets/visuals/evidence-stack.jpg" alt="Transparent evidence layers accumulating from early signal to durable clinical proof" loading="lazy" decoding="async" />
-                <figcaption>
-                  <span>Evidence stack</span>
-                  <strong>Signal is not proof. Proof compounds.</strong>
-                </figcaption>
-              </figure>
+            <aside>
+              <div class="evidence-map" role="img" aria-label="Evidence map showing durable human evidence for closed-loop therapy, fast-moving human evidence for communication BCIs, early clinical evidence for alternate interface routes, early human evidence for non-invasive systems, and emerging frameworks for governance">
+                <div class="diagram-label">Evidence map · 2026</div>
+                <div class="evidence-map__scale"><span>Earlier</span><span>More durable evidence →</span></div>
+                <div class="evidence-map__rows">
+                  <div style="--evidence: 92%"><span>Closed-loop therapy</span><i></i><strong>Durable human</strong></div>
+                  <div style="--evidence: 76%"><span>Communication BCIs</span><i></i><strong>Fast-moving human</strong></div>
+                  <div style="--evidence: 56%"><span>Alternate access routes</span><i></i><strong>Early clinical</strong></div>
+                  <div style="--evidence: 34%"><span>Non-invasive systems</span><i></i><strong>Early human</strong></div>
+                  <div style="--evidence: 22%"><span>Governance &amp; continuity</span><i></i><strong>Framework forming</strong></div>
+                </div>
+                <p>Technical possibility becomes product evidence only through repeatable human benefit, time, and real-world use.</p>
+              </div>
             </aside>
           </div>
+          <div class="research-list" id="research-list"></div>
         </section>
 
         <section class="chapter chapter--wide" id="timeline">
@@ -380,13 +393,15 @@
               </div>
             </div>
             <aside class="chapter-aside">
-              <figure class="chapter-scene chapter-scene--dark chapter-scene--horizon" data-scene="horizon">
-                <img src="assets/visuals/neural-horizon.jpg" alt="A luminous neural lattice opening toward a calm horizon, suggesting a hopeful but uncertain future" loading="lazy" decoding="async" />
-                <figcaption>
-                  <span>Possible future</span>
-                  <strong>Restore first. Expand carefully.</strong>
-                </figcaption>
-              </figure>
+              <div class="chapter-scene chapter-scene--diagram outcome-diagram" role="img" aria-label="Trustworthy neurotechnology requires restored function, durable systems, and protected human agency">
+                <div class="diagram-label">The standard for success</div>
+                <div class="outcome-diagram__inputs">
+                  <div><span>01</span><strong>Restore function</strong><small>Meaningful human benefit</small></div>
+                  <div><span>02</span><strong>Survive real life</strong><small>Durability, care, support</small></div>
+                  <div><span>03</span><strong>Protect agency</strong><small>Privacy, choice, continuity</small></div>
+                </div>
+                <div class="outcome-diagram__result"><span>→</span><strong>Trustworthy neurotech</strong><small>Restore first. Expand carefully.</small></div>
+              </div>
             </aside>
           </div>
         </section>
@@ -412,6 +427,6 @@
       <div class="company-modal__content" id="company-modal-content"></div>
     </dialog>
 
-    <script src="app.js?v=19"></script>
+    <script src="app.js?v=20"></script>
   </body>
 </html>
