@@ -4426,3 +4426,194 @@ body::after {
     grid-template-columns: 40px minmax(0, 1fr);
   }
 }
+
+/* v22: tighter chapter rhythm with restrained mineral color. */
+:root {
+  --accent: #b89a70;
+  --teal: #789b98;
+  --olive: #8d967a;
+  --rose: #9c7f86;
+  --blue: #7d879e;
+}
+
+body {
+  background:
+    radial-gradient(circle at 14% -8%, rgba(120, 155, 152, 0.055), transparent 28%),
+    radial-gradient(circle at 88% 18%, rgba(184, 154, 112, 0.04), transparent 24%),
+    linear-gradient(180deg, #050505, #070707 48%, #040404);
+}
+
+.site-kicker,
+.section-kicker,
+.research-track__kicker,
+.diagram-label,
+.brief-card__eyebrow,
+.ecosystem-card__kicker,
+.dossier-kicker,
+.comparison-table th,
+.landscape-toolbar__eyebrow {
+  color: var(--accent);
+}
+
+.chapter-number {
+  border-color: color-mix(in srgb, var(--accent) 52%, transparent);
+  color: var(--accent);
+}
+
+.chapter-rail__inner::after {
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+}
+
+.chapter-rail__inner a:hover::before,
+.chapter-rail__inner a.is-active::before {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.modality-diagram__rows i::before,
+.evidence-map__rows i::before {
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+}
+
+.modality-diagram__rows i::after,
+.evidence-map__rows i::after {
+  border-color: color-mix(in srgb, var(--teal) 64%, var(--ink));
+  background: color-mix(in srgb, var(--teal) 58%, var(--ink));
+  box-shadow: 0 0 0 3px rgba(120, 155, 152, 0.1);
+}
+
+.cite-inline a,
+.source-row__label span,
+.research-paper__meta span,
+.timeline-item__year {
+  color: var(--accent);
+}
+
+.loop-diagram__return {
+  border-color: rgba(184, 154, 112, 0.24);
+  background: rgba(184, 154, 112, 0.025);
+}
+
+.outcome-diagram__result {
+  border-color: rgba(120, 155, 152, 0.26);
+  background: linear-gradient(135deg, rgba(120, 155, 152, 0.075), rgba(184, 154, 112, 0.035));
+}
+
+.chapter-scene--diagram,
+.evidence-map {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(120, 155, 152, 0.035), transparent 29%),
+    rgba(245, 242, 235, 0.012);
+}
+
+@media (min-width: 1101px) {
+  .site-header,
+  .site-header__inner {
+    min-height: 720px;
+  }
+
+  .hero-layout {
+    min-height: 620px;
+  }
+
+  .hero-visual {
+    min-height: 300px;
+    margin-top: -46px;
+  }
+
+  .hero-scene {
+    width: min(680px, 68vw);
+  }
+
+  #modalities,
+  #market-map,
+  #endgame {
+    padding-top: 72px;
+    padding-bottom: 58px;
+  }
+
+  #modalities {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 420px;
+    grid-template-rows: auto auto auto;
+    column-gap: clamp(46px, 5vw, 72px);
+    align-items: start;
+  }
+
+  #modalities .chapter-heading {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  #modalities .chapter-layout {
+    display: contents;
+  }
+
+  #modalities .chapter-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #modalities .chapter-aside {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    align-self: start;
+  }
+
+  #modalities .table-wrap {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 24px;
+  }
+
+  #modalities .modality-diagram {
+    height: 430px;
+    aspect-ratio: auto;
+    padding: 24px;
+  }
+
+  #modalities .modality-diagram__axis {
+    margin: 16px 0 10px;
+  }
+
+  #modalities .modality-diagram__rows > div {
+    min-height: 49px;
+  }
+
+  #modalities .modality-diagram__note {
+    margin-top: 12px;
+    padding-top: 12px;
+    font-size: 0.75rem;
+  }
+
+  #market-map .chapter-scene--prism {
+    height: 300px;
+    aspect-ratio: auto;
+  }
+
+  #endgame {
+    padding-bottom: 56px;
+  }
+
+  #endgame .chapter-scene {
+    height: 430px;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .site-header__inner {
+    min-height: min(780px, 100svh);
+  }
+
+  .hero-layout {
+    min-height: min(730px, calc(100svh - 48px));
+  }
+
+  #modalities,
+  #market-map,
+  #endgame {
+    padding-top: 56px;
+  }
+}
