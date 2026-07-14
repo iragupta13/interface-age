@@ -3660,6 +3660,38 @@ body {
   }
 }
 
+/* v23: preserve complete product renders instead of cropping mixed source ratios. */
+.product-media--modal img,
+.product-media--card img,
+.product-media--mini img {
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  animation: none;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(120, 155, 152, 0.08), transparent 54%),
+    #080909;
+}
+
+.product-media {
+  perspective: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.product-media:hover img {
+  transform: none;
+}
+
+.product-media--modal img {
+  border: 1px solid rgba(245, 242, 235, 0.1);
+}
+
+.product-media__provenance,
+.company-modal::backdrop {
+  backdrop-filter: none;
+}
+
 .motion-ready .field-brief,
 .motion-ready .ecosystem-card,
 .motion-ready .player-row {
