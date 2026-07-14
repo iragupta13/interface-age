@@ -11,7 +11,9 @@ The guide moves from first principles to the current landscape:
 - How neural interfaces read, write, and close the loop
 - Core concepts such as invasiveness, bandwidth, decoding drift, and clinical workflow
 - Interface modalities and their technical tradeoffs
-- Use cases, company profiles, research evidence, and an industry timeline
+- A 90-second field brief with maturity and evidence signals
+- Use cases, filterable company profiles, research evidence, and an industry timeline
+- The broader power map: incumbents, sensory-prosthetic leaders, labs, tooling, regulators, and payers
 - Bottlenecks, likely next steps, governance questions, and primary sources
 
 The current site includes 13 structured chapters, 200+ links, and inline citations designed to make a fast-moving field easier to navigate.
@@ -21,6 +23,7 @@ The current site includes 13 structured chapters, 200+ links, and inline citatio
 - Semantic HTML with accessible heading and navigation structure
 - Custom responsive CSS and a long-form editorial visual system
 - Vanilla JavaScript for navigation, filtering, and interactive components
+- Responsive maturity filters and company dossiers designed for comparison
 - GitHub Pages for a lightweight, dependency-free deployment
 
 ## Run locally

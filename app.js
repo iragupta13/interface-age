@@ -1460,6 +1460,119 @@ companies.forEach((company) => {
   };
 });
 
+const companySignals = {
+  neuralink: { key: "early-human", stage: "Early human", evidence: "Public trial updates; limited peer-reviewed product data" },
+  precision: { key: "human-clinical", stage: "Regulated clinical", evidence: "Human studies and device clearance" },
+  synchron: { key: "human-clinical", stage: "Human clinical", evidence: "Published safety study and active trials" },
+  paradromics: { key: "early-human", stage: "First-in-human", evidence: "Cleared study with early human activity" },
+  science: { key: "human-clinical", stage: "Pivotal clinical", evidence: "Peer-reviewed human outcomes" },
+  inbrain: { key: "early-human", stage: "Early human", evidence: "Breakthrough designation and first implant" },
+  motif: { key: "research", stage: "Clinical readiness", evidence: "Registry and pre-commercial program" },
+  nudge: { key: "research", stage: "Research / stealth", evidence: "Sparse primary disclosure" },
+  cognixion: { key: "human-clinical", stage: "Human studies", evidence: "Assistive research and partner programs" },
+  forest: { key: "research", stage: "Research platform", evidence: "Translational research; product path emerging" },
+  blackrock: { key: "commercial", stage: "Established platform", evidence: "Long-running human research infrastructure" },
+  cala: { key: "commercial", stage: "Marketed therapy", evidence: "FDA clearance, coverage, and home use" },
+  neuropace: { key: "commercial", stage: "Standard of care", evidence: "FDA approval and long-term outcomes" },
+  neuspera: { key: "commercial", stage: "Approved therapy", evidence: "FDA-approved disease-specific implant" },
+  salvia: { key: "human-clinical", stage: "Clinical stage", evidence: "Human studies and late-stage financing" },
+  neurable: { key: "commercial", stage: "Early market", evidence: "Consumer product and research platform" },
+};
+
+companies.forEach((company) => {
+  company.signal = companySignals[company.id] || {
+    key: "research",
+    stage: "Research",
+    evidence: "Public evidence still developing",
+  };
+  if (!company.filterTags.includes(company.signal.key)) {
+    company.filterTags.push(company.signal.key);
+  }
+});
+
+const fieldBrief = [
+  {
+    eyebrow: "Mature now",
+    title: "Disease-specific stimulation",
+    body: "The strongest commercial reality sits in focused therapies with measurable endpoints: epilepsy, tremor, movement disorders, pain, and peripheral neuromodulation.",
+    tone: "teal",
+  },
+  {
+    eyebrow: "Clinically real",
+    title: "Assistive communication",
+    body: "Cursor control, text entry, speech decoding, and sensory restoration have crossed into meaningful human evidence, but most systems remain early and high-touch.",
+    tone: "accent",
+  },
+  {
+    eyebrow: "Still unproven",
+    title: "Durable everyday BCI",
+    body: "The missing proof is years of reliable home use with low calibration burden, maintainable hardware, clear support, and benefits that beat existing interfaces.",
+    tone: "rose",
+  },
+  {
+    eyebrow: "What decides winners",
+    title: "Workflow over spectacle",
+    body: "Surgery, training, clinician time, reimbursement, service, and continuity of care will separate durable products from technically impressive demonstrations.",
+    tone: "blue",
+  },
+];
+
+const ecosystemGroups = [
+  {
+    kicker: "Established therapeutic devices",
+    title: "The incumbents",
+    body: "Large medtech companies already own clinical channels, procedural training, reimbursement muscle, and long-lived stimulation portfolios.",
+    players: [
+      ["Medtronic", "https://www.medtronic.com/"],
+      ["Abbott Neuromodulation", "https://www.neuromodulation.abbott/"],
+      ["Boston Scientific", "https://www.bostonscientific.com/"],
+      ["LivaNova", "https://www.livanova.com/"],
+    ],
+  },
+  {
+    kicker: "Sensory restoration",
+    title: "The mature prosthetic branch",
+    body: "Cochlear implants are the clearest reminder that neural interfaces can become durable, global product categories rather than perpetual experiments.",
+    players: [
+      ["Cochlear", "https://www.cochlear.com/"],
+      ["MED-EL", "https://www.medel.com/"],
+      ["Advanced Bionics", "https://www.advancedbionics.com/"],
+    ],
+  },
+  {
+    kicker: "Translational research",
+    title: "The labs behind the frontier",
+    body: "Many of the field's most important capabilities emerge from long-running academic teams before they become company roadmaps.",
+    players: [
+      ["BrainGate", "https://www.braingate.org/"],
+      ["Stanford NPTL", "https://nptl.stanford.edu/"],
+      ["UCSF Chang Lab", "https://changlab.ucsf.edu/"],
+    ],
+  },
+  {
+    kicker: "Tools and data",
+    title: "The enabling stack",
+    body: "Acquisition hardware, research software, electrodes, datasets, and developer access shape who can build and reproduce the next generation of systems.",
+    players: [
+      ["Ripple Neuro", "https://rippleneuro.com/"],
+      ["g.tec", "https://www.gtec.at/"],
+      ["OpenBCI", "https://openbci.com/"],
+      ["EMOTIV", "https://www.emotiv.com/"],
+    ],
+  },
+  {
+    kicker: "Translation and access",
+    title: "The rule-setters",
+    body: "Regulators, public funders, hospital systems, and payers determine study design, evidence thresholds, access, and whether a product can become routine care.",
+    players: [
+      ["NIH BRAIN Initiative", "https://braininitiative.nih.gov/"],
+      ["DARPA BTO", "https://www.darpa.mil/research/programs/bto"],
+      ["U.S. FDA", "https://www.fda.gov/medical-devices"],
+      ["CMS", "https://www.cms.gov/"],
+    ],
+  },
+];
+
 const useCases = [
   {
     title: "Communication for paralysis and ALS",
@@ -1767,6 +1880,10 @@ const nextSteps = [
 
 const filters = [
   { key: "all", label: "All" },
+  { key: "commercial", label: "Marketed / approved" },
+  { key: "human-clinical", label: "Human clinical" },
+  { key: "early-human", label: "Early human" },
+  { key: "research", label: "Research" },
   { key: "frontier", label: "Frontier BCI" },
   { key: "therapeutic", label: "Therapeutic" },
   { key: "sensory", label: "Sensory" },
@@ -1780,6 +1897,14 @@ const filters = [
 ];
 
 const filterDescriptions = {
+  commercial:
+    "Marketed / approved includes established research platforms and products already sold, cleared, approved, covered, or operating in routine care pathways.",
+  "human-clinical":
+    "Human clinical includes companies with meaningful human studies, published outcomes, or regulated clinical programs beyond a first demonstration.",
+  "early-human":
+    "Early human includes first-in-human and small initial programs where feasibility is visible but durability and scale remain open questions.",
+  research:
+    "Research includes pre-commercial, translational, or sparsely disclosed programs whose product and evidence layers are still forming.",
   frontier:
     "Frontier BCI means direct neural-interface companies pushing richer readout or control, usually through more ambitious hardware and decoding stacks.",
   therapeutic:
@@ -1816,6 +1941,65 @@ function renderSignalCards() {
       <p>${item.body}</p>
     </article>
   `);
+}
+
+function renderFieldBrief() {
+  const maturityCounts = ["commercial", "human-clinical", "early-human", "research"]
+    .map((key) => companies.filter((company) => company.signal.key === key).length);
+
+  $("#field-brief").innerHTML = `
+    <div class="field-brief__topline">
+      <div>
+        <p class="section-kicker">The 90-second briefing</p>
+        <h3>Where the field actually stands</h3>
+      </div>
+      <div class="coverage-stats" aria-label="Guide coverage statistics">
+        <p><strong>${companies.length}</strong><span>company dossiers</span></p>
+        <p><strong>${landscapeColumns.length}</strong><span>interface paths</span></p>
+        <p><strong>${sources.length}</strong><span>linked sources</span></p>
+      </div>
+    </div>
+    <div class="field-brief__grid">
+      ${fieldBrief.map((item) => `
+        <article class="brief-card brief-card--${item.tone}">
+          <p class="brief-card__eyebrow">${item.eyebrow}</p>
+          <h4>${item.title}</h4>
+          <p>${item.body}</p>
+        </article>
+      `).join("")}
+    </div>
+    <div class="maturity-strip" aria-label="Profiled company maturity distribution">
+      <div class="maturity-strip__label">
+        <span>Profile maturity</span>
+        <small>Not a quality ranking</small>
+      </div>
+      ${[
+        ["Marketed / established", maturityCounts[0], "commercial"],
+        ["Human clinical", maturityCounts[1], "human-clinical"],
+        ["Early human", maturityCounts[2], "early-human"],
+        ["Research", maturityCounts[3], "research"],
+      ].map(([label, count, key]) => `
+        <div class="maturity-strip__item maturity-strip__item--${key}">
+          <strong>${count}</strong><span>${label}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderEcosystem() {
+  $("#ecosystem-grid").innerHTML = ecosystemGroups.map((group) => `
+    <article class="ecosystem-card">
+      <p class="ecosystem-card__kicker">${group.kicker}</p>
+      <h4>${group.title}</h4>
+      <p>${group.body}</p>
+      <div class="ecosystem-card__links">
+        ${group.players.map(([name, url]) => `
+          <a href="${url}" target="_blank" rel="noreferrer">${name}<span aria-hidden="true">↗</span></a>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
 }
 
 function renderPrimer() {
@@ -1930,6 +2114,7 @@ function renderMarketMap() {
                                   <div class="pathway-company__copy">
                                     <strong>${company.name}</strong>
                                     <p>${company.product.device}</p>
+                                    <span class="company-stage company-stage--${company.signal.key}">${company.signal.stage}</span>
                                   </div>
                                 </button>
                               `
@@ -1999,6 +2184,8 @@ function playerRow(company) {
       <div class="player-row__visual-col">
         ${productMediaHtml(company, "card")}
         <div class="player-row__snapshot">
+          <p><span>Maturity</span><b class="company-stage company-stage--${company.signal.key}">${company.signal.stage}</b></p>
+          <p><span>Evidence signal</span>${company.signal.evidence}</p>
           <p><span>Device</span>${company.product.device}</p>
           <p><span>Touchpoint</span>${company.product.touchpoint}</p>
           <p><span>First job</span>${company.product.firstJob}</p>
@@ -2044,6 +2231,10 @@ function renderPlayers(active = "all") {
     (company) => active === "all" || company.filterTags.includes(active)
   );
   $("#player-index").innerHTML = visible.map(playerRow).join("");
+  $("#tracker-summary").innerHTML = `
+    <p><strong>${visible.length}</strong><span>${active === "all" ? "profiles in view" : `profiles tagged ${filters.find((item) => item.key === active)?.label || active}`}</span></p>
+    <p>Use the maturity filters to separate products in market from clinical programs and research-stage bets.</p>
+  `;
 }
 
 function renderResearch() {
@@ -2161,6 +2352,14 @@ function companyModalHtml(company) {
     <div class="dossier-intro">
       ${productMediaHtml(company, "modal")}
       <div class="dossier-facts">
+        <div>
+          <span>Maturity</span>
+          <p><b class="company-stage company-stage--${company.signal.key}">${company.signal.stage}</b></p>
+        </div>
+        <div>
+          <span>Evidence signal</span>
+          <p>${company.signal.evidence}</p>
+        </div>
         <div>
           <span>Device</span>
           <p>${company.product.device}</p>
@@ -2288,6 +2487,7 @@ function setupRailHighlight() {
 }
 
 function init() {
+  renderFieldBrief();
   renderSignalCards();
   renderPrimer();
   renderConcepts();
@@ -2299,6 +2499,7 @@ function init() {
   renderBottlenecks();
   renderNextSteps();
   renderSources();
+  renderEcosystem();
   setupFilters();
   setupDossiers();
   setupRailHighlight();
