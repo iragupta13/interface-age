@@ -2350,6 +2350,15 @@ function setupRailHighlight() {
   function updateActiveLink() {
     const offset = 150;
     let activeSection = sections[0];
+    const scrollable = Math.max(
+      1,
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+    const progress = Math.min(1, Math.max(0, window.scrollY / scrollable));
+    document.documentElement.style.setProperty(
+      "--reading-progress",
+      `${(progress * 100).toFixed(2)}%`
+    );
 
     sections.forEach((section) => {
       if (section.getBoundingClientRect().top <= offset) {
@@ -2372,7 +2381,7 @@ function setupRailHighlight() {
 
 function setupRevealMotion() {
   const targets = Array.from(document.querySelectorAll(
-    ".chapter, .field-brief, .ecosystem-card, .chapter-scene"
+    ".field-brief, .ecosystem-card, .chapter-scene"
   ));
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
