@@ -2372,7 +2372,7 @@ function setupRailHighlight() {
 
 function setupRevealMotion() {
   const targets = Array.from(document.querySelectorAll(
-    ".chapter, .field-brief, .ecosystem-card"
+    ".chapter, .field-brief, .ecosystem-card, .chapter-scene"
   ));
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -2417,6 +2417,28 @@ function setupDepthMotion() {
   });
 }
 
+function setupSectionSceneMotion() {
+  const scenes = Array.from(document.querySelectorAll("[data-scene]"));
+  const precisePointer = window.matchMedia(
+    "(prefers-reduced-motion: no-preference) and (pointer: fine)"
+  ).matches;
+  if (!precisePointer) return;
+
+  scenes.forEach((scene) => {
+    scene.addEventListener("pointermove", (event) => {
+      const rect = scene.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      scene.style.setProperty("--scene-x", `${(-y * 4).toFixed(2)}deg`);
+      scene.style.setProperty("--scene-y", `${(x * 5).toFixed(2)}deg`);
+    });
+    scene.addEventListener("pointerleave", () => {
+      scene.style.removeProperty("--scene-x");
+      scene.style.removeProperty("--scene-y");
+    });
+  });
+}
+
 function init() {
   renderFieldBrief();
   renderSignalCards();
@@ -2436,6 +2458,7 @@ function init() {
   setupRailHighlight();
   setupRevealMotion();
   setupDepthMotion();
+  setupSectionSceneMotion();
 }
 
 init();
