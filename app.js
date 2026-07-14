@@ -1888,55 +1888,6 @@ const nextSteps = [
   },
 ];
 
-const filters = [
-  { key: "all", label: "All" },
-  { key: "commercial", label: "Marketed / approved" },
-  { key: "human-clinical", label: "Human clinical" },
-  { key: "early-human", label: "Early human" },
-  { key: "research", label: "Research" },
-  { key: "frontier", label: "Frontier BCI" },
-  { key: "therapeutic", label: "Therapeutic" },
-  { key: "sensory", label: "Sensory" },
-  { key: "consumer", label: "Consumer / Assistive" },
-  { key: "infrastructure", label: "Infrastructure" },
-  { key: "noninvasive", label: "Non-invasive" },
-  { key: "clinical", label: "Clinical" },
-  { key: "intracortical", label: "Intracortical" },
-  { key: "surface", label: "Surface" },
-  { key: "endovascular", label: "Endovascular" },
-];
-
-const filterDescriptions = {
-  commercial:
-    "Marketed / approved includes established research platforms and products already sold, cleared, approved, covered, or operating in routine care pathways.",
-  "human-clinical":
-    "Human clinical includes companies with meaningful human studies, published outcomes, or regulated clinical programs beyond a first demonstration.",
-  "early-human":
-    "Early human includes first-in-human and small initial programs where feasibility is visible but durability and scale remain open questions.",
-  research:
-    "Research includes pre-commercial, translational, or sparsely disclosed programs whose product and evidence layers are still forming.",
-  frontier:
-    "Frontier BCI means direct neural-interface companies pushing richer readout or control, usually through more ambitious hardware and decoding stacks.",
-  therapeutic:
-    "Therapeutic means the product's first job is symptom relief or treatment, not general-purpose thought decoding.",
-  sensory:
-    "Sensory means the device is trying to restore or substitute perception such as vision rather than mainly control software.",
-  consumer:
-    "Consumer / assistive means lower-burden systems aimed at everyday use, communication support, or non-clinical cognitive utility.",
-  infrastructure:
-    "Infrastructure means picks-and-shovels neurotech: research platforms, implants, or tooling that enable other programs more than end-user products.",
-  noninvasive:
-    "Non-invasive means the system stays outside the body and trades easier access and distribution for weaker or noisier signals.",
-  clinical:
-    "Clinical means the company is already operating in regulated human studies, approved care pathways, or close to real patient deployment.",
-  intracortical:
-    "Intracortical means electrodes penetrate into cortex to get very close to neurons for higher-bandwidth recording or stimulation.",
-  surface:
-    "Surface means the interface sits on brain or tissue surfaces rather than penetrating deeply, aiming for a middle ground on signal and burden.",
-  endovascular:
-    "Endovascular means the device reaches the brain through blood vessels instead of open cortical placement, using vascular access as the surgical pathway.",
-};
-
 const $ = (selector) => document.querySelector(selector);
 
 function renderList(target, items, template) {
@@ -2193,77 +2144,6 @@ function renderUseCases() {
   `);
 }
 
-function renderFilters(active = "all") {
-  renderList("#filters", filters, (item) => `
-    <button
-      type="button"
-      class="filter-chip ${item.key === active ? "is-active" : ""}"
-      data-filter="${item.key}"
-    >
-      ${item.label}
-    </button>
-  `);
-}
-
-function playerRow(company) {
-  return `
-    <article class="player-row">
-      <div class="player-row__visual-col">
-        ${productMediaHtml(company, "card")}
-        <div class="player-row__snapshot">
-          <p><span>Maturity</span><b class="company-stage company-stage--${company.signal.key}">${company.signal.stage}</b></p>
-          <p><span>Evidence signal</span>${company.signal.evidence}</p>
-          <p><span>Device</span>${company.product.device}</p>
-          <p><span>Touchpoint</span>${company.product.touchpoint}</p>
-          <p><span>First job</span>${company.product.firstJob}</p>
-        </div>
-      </div>
-      <div class="player-row__main">
-        <div class="player-row__header">
-          <div>
-            <h3>
-              <button type="button" class="player-row__name" data-company="${company.id}">
-                ${company.name}
-              </button>
-            </h3>
-            <p class="player-row__badge">${company.badge}</p>
-          </div>
-        </div>
-        <p class="player-row__blurb">${company.blurb}</p>
-        <p class="player-row__summary">${company.summary}</p>
-      </div>
-      <div class="player-row__meta">
-        <div>
-          <strong>Product shape</strong>
-          <p>${company.product.procedure}</p>
-        </div>
-        <div>
-          <strong>Traction now</strong>
-          <p>${company.traction}</p>
-        </div>
-        <div class="player-tags">
-          ${company.filterTags
-            .filter((tag) => tag !== "all")
-            .slice(0, 4)
-            .map((tag) => `<span>${tag}</span>`)
-            .join("")}
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderPlayers(active = "all") {
-  const visible = companies.filter(
-    (company) => active === "all" || company.filterTags.includes(active)
-  );
-  $("#player-index").innerHTML = visible.map(playerRow).join("");
-  $("#tracker-summary").innerHTML = `
-    <p><strong>${visible.length}</strong><span>${active === "all" ? "profiles in view" : `profiles tagged ${filters.find((item) => item.key === active)?.label || active}`}</span></p>
-    <p>Use the maturity filters to separate products in market from clinical programs and research-stage bets.</p>
-  `;
-}
-
 function renderResearch() {
   renderList("#research-list", researchItems, (item) => `
     <article class="research-track">
@@ -2342,29 +2222,6 @@ function renderSources() {
       </div>
     </article>
   `);
-}
-
-function setupFilters() {
-  let active = "all";
-  renderFilters(active);
-  renderPlayers(active);
-  const explainer = $("#filter-explainer");
-
-  const syncExplainer = () => {
-    explainer.textContent = active === "all" ? "" : filterDescriptions[active] || "";
-    explainer.hidden = active === "all";
-  };
-
-  syncExplainer();
-
-  $("#filters").addEventListener("click", (event) => {
-    const button = event.target.closest("[data-filter]");
-    if (!button) return;
-    active = button.dataset.filter;
-    renderFilters(active);
-    renderPlayers(active);
-    syncExplainer();
-  });
 }
 
 function companyModalHtml(company) {
@@ -2515,7 +2372,7 @@ function setupRailHighlight() {
 
 function setupRevealMotion() {
   const targets = Array.from(document.querySelectorAll(
-    ".chapter, .field-brief, .ecosystem-card, .player-row"
+    ".chapter, .field-brief, .ecosystem-card"
   ));
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -2575,7 +2432,6 @@ function init() {
   renderSources();
   renderEcosystem();
   setupLandscapeFilters();
-  setupFilters();
   setupDossiers();
   setupRailHighlight();
   setupRevealMotion();

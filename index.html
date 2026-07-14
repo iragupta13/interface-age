@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Average&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=16" />
+    <link rel="stylesheet" href="styles.css?v=17" />
   </head>
   <body>
     <div class="site-grain" aria-hidden="true"></div>
@@ -61,7 +61,6 @@
         <a href="#modalities">Modalities</a>
         <a href="#market-map">Landscape</a>
         <a href="#use-cases" class="chapter-rail__minor">Use Cases</a>
-        <a href="#players">Players</a>
         <a href="#research" class="chapter-rail__minor">Research</a>
         <a href="#timeline">Timeline</a>
         <a href="#bottlenecks">Bottlenecks</a>
@@ -86,13 +85,12 @@
               <a href="#modalities">04 Interface Modalities</a>
               <a href="#market-map">05 Field Landscape</a>
               <a href="#use-cases">06 Where It Is Useful First</a>
-              <a href="#players">07 Company Tracker</a>
-              <a href="#research">08 What the Research Actually Shows</a>
-              <a href="#timeline">09 Timeline</a>
-              <a href="#bottlenecks">10 What Is Still Hard</a>
-              <a href="#next-steps">11 Likely Next Steps</a>
-              <a href="#endgame">12 The Endgame</a>
-              <a href="#sources">13 Sources</a>
+              <a href="#research">07 What the Research Actually Shows</a>
+              <a href="#timeline">08 Timeline</a>
+              <a href="#bottlenecks">09 What Is Still Hard</a>
+              <a href="#next-steps">10 Likely Next Steps</a>
+              <a href="#endgame">11 The Endgame</a>
+              <a href="#sources">12 Sources</a>
             </div>
           </div>
         </section>
@@ -276,6 +274,19 @@
             <div class="market-map" id="market-map-plot"></div>
             <div class="market-legend" id="market-legend"></div>
           </div>
+          <section class="ecosystem-section" aria-labelledby="ecosystem-title">
+            <div class="ecosystem-section__head">
+              <p class="section-kicker">The rest of the power map</p>
+              <h3 id="ecosystem-title">Beyond the company matrix</h3>
+              <p>
+                A complete landscape cannot stop at venture-backed neurotech companies.
+                Established device makers, sensory-prosthetic leaders, translational labs,
+                research platforms, regulators, and payers often determine what actually
+                reaches people.
+              </p>
+            </div>
+            <div class="ecosystem-grid" id="ecosystem-grid"></div>
+          </section>
         </section>
 
         <section class="chapter chapter--split" id="use-cases">
@@ -305,40 +316,9 @@
           </div>
         </section>
 
-        <section class="chapter" id="players">
-          <div class="chapter-heading">
-            <p class="chapter-number">07</p>
-            <h2>Company Tracker</h2>
-          </div>
-          <p class="chapter-intro">
-            This tracker focuses on companies with enough public signal to
-            compare seriously. That includes frontier BCI companies, therapeutic
-            neuromodulation players, sensory prosthetic builders, and
-            infrastructure layers. It does not try to catalog every tiny startup
-            or every stealth rumor.
-          </p>
-          <div class="tracker-summary" id="tracker-summary" aria-label="Tracker coverage"></div>
-          <div class="filter-row" id="filters"></div>
-          <p class="filter-explainer" id="filter-explainer" aria-live="polite"></p>
-          <div class="player-index" id="player-index"></div>
-          <section class="ecosystem-section" aria-labelledby="ecosystem-title">
-            <div class="ecosystem-section__head">
-              <p class="section-kicker">The rest of the power map</p>
-              <h3 id="ecosystem-title">Beyond the startup tracker</h3>
-              <p>
-                A serious neurotech landscape cannot stop at venture-backed BCI companies.
-                Established device makers, sensory-prosthetic leaders, translational labs,
-                research platforms, regulators, and payers often determine what actually
-                reaches people.
-              </p>
-            </div>
-            <div class="ecosystem-grid" id="ecosystem-grid"></div>
-          </section>
-        </section>
-
         <section class="chapter chapter--split chapter--research" id="research">
           <div class="chapter-heading">
-            <p class="chapter-number">08</p>
+            <p class="chapter-number">07</p>
             <h2>What the Research Actually Shows</h2>
           </div>
           <div class="chapter-layout">
@@ -373,7 +353,7 @@
 
         <section class="chapter chapter--split" id="timeline">
           <div class="chapter-heading">
-            <p class="chapter-number">09</p>
+            <p class="chapter-number">08</p>
             <h2>Timeline</h2>
           </div>
           <div class="chapter-layout">
@@ -396,7 +376,7 @@
 
         <section class="chapter chapter--split" id="bottlenecks">
           <div class="chapter-heading">
-            <p class="chapter-number">10</p>
+            <p class="chapter-number">09</p>
             <h2>What Is Still Hard</h2>
           </div>
           <div class="chapter-layout">
@@ -418,7 +398,7 @@
 
         <section class="chapter chapter--split" id="next-steps">
           <div class="chapter-heading">
-            <p class="chapter-number">11</p>
+            <p class="chapter-number">10</p>
             <h2>Likely Next Steps</h2>
           </div>
           <div class="chapter-layout">
@@ -440,7 +420,7 @@
 
         <section class="chapter chapter--split" id="endgame">
           <div class="chapter-heading">
-            <p class="chapter-number">12</p>
+            <p class="chapter-number">11</p>
             <h2>The Endgame</h2>
           </div>
           <div class="chapter-layout">
@@ -497,7 +477,7 @@
 
         <section class="chapter chapter--sources" id="sources">
           <div class="chapter-heading">
-            <p class="chapter-number">13</p>
+            <p class="chapter-number">12</p>
             <h2>Sources</h2>
           </div>
           <p class="chapter-intro">
@@ -516,6 +496,6 @@
       <div class="company-modal__content" id="company-modal-content"></div>
     </dialog>
 
-    <script src="app.js?v=16"></script>
+    <script src="app.js?v=17"></script>
   </body>
 </html>
