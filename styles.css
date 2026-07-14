@@ -3692,6 +3692,111 @@ body {
   backdrop-filter: none;
 }
 
+/* v24: diagrams that fit their containers, plus a more intentional hero. */
+.landscape-lens {
+  height: auto;
+  min-height: 320px;
+  aspect-ratio: auto;
+  padding: 24px;
+}
+
+.landscape-lens__axes {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 12px;
+}
+
+.landscape-lens__axes > div,
+.landscape-lens__result {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(245, 242, 235, 0.1);
+  background: rgba(245, 242, 235, 0.018);
+}
+
+.landscape-lens__axes > div {
+  min-height: 54px;
+  padding: 9px 12px;
+}
+
+.landscape-lens__axes span,
+.landscape-lens__result > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(120, 155, 152, 0.36);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+}
+
+.landscape-lens__axes strong,
+.landscape-lens__axes small,
+.landscape-lens__result strong,
+.landscape-lens__result small {
+  display: block;
+}
+
+.landscape-lens__axes strong,
+.landscape-lens__result strong {
+  margin-bottom: 2px;
+  font-size: 1rem;
+}
+
+.landscape-lens__axes small,
+.landscape-lens__result small {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  line-height: 1.35;
+}
+
+.landscape-lens__result {
+  min-height: 54px;
+  padding: 9px 12px;
+  border-color: rgba(120, 155, 152, 0.28);
+  background: linear-gradient(90deg, rgba(120, 155, 152, 0.07), rgba(184, 154, 112, 0.035));
+}
+
+#endgame .outcome-diagram {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+  padding: 24px;
+}
+
+#endgame .outcome-diagram__inputs {
+  gap: 8px;
+  margin: 18px 0 12px;
+}
+
+#endgame .outcome-diagram__inputs > div {
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 2px 11px;
+  padding: 11px 13px;
+}
+
+#endgame .outcome-diagram__inputs strong {
+  font-size: 0.96rem;
+}
+
+#endgame .outcome-diagram__result {
+  padding: 17px 18px 16px;
+}
+
+#endgame .outcome-diagram__result > span {
+  top: 12px;
+  right: 15px;
+}
+
+#endgame .outcome-diagram__result strong {
+  font-size: 1.24rem;
+}
+
 .motion-ready .field-brief,
 .motion-ready .ecosystem-card,
 .motion-ready .player-row {
@@ -4647,5 +4752,138 @@ body {
   #market-map,
   #endgame {
     padding-top: 56px;
+  }
+}
+
+/* v24 final cascade: keep the responsive fixes after the legacy theme layers. */
+.landscape-lens {
+  height: auto;
+  min-height: 330px;
+  aspect-ratio: auto;
+}
+
+#endgame .outcome-diagram {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+@media (min-width: 1101px) {
+  .site-kicker {
+    text-align: left;
+  }
+
+  .hero-layout {
+    grid-template-columns: minmax(430px, 0.82fr) minmax(620px, 1.18fr);
+    grid-template-rows: 1fr;
+    gap: 0;
+    align-items: center;
+    justify-items: stretch;
+    min-height: 620px;
+    text-align: left;
+  }
+
+  .hero-copy {
+    justify-self: start;
+    max-width: 620px;
+    padding-top: 0;
+  }
+
+  .hero-copy h1 {
+    max-width: 9.5ch;
+    font-size: clamp(4.9rem, 6vw, 6.6rem);
+    line-height: 0.9;
+    white-space: normal;
+  }
+
+  .hero-dek {
+    max-width: 42ch;
+    margin: 22px 0 0;
+  }
+
+  .hero-meta {
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+
+  .hero-enter {
+    margin: 26px 0 0;
+  }
+
+  .hero-visual {
+    align-self: center;
+    min-height: 0;
+    margin: 0 -54px 0 -72px;
+  }
+
+  .hero-scene {
+    width: min(820px, 56vw);
+  }
+
+  .hero-scene img {
+    opacity: 0.9;
+    filter: grayscale(0.88) sepia(0.14) contrast(1.38) brightness(1.08);
+  }
+
+  .hero-visual p {
+    margin-top: -8px;
+  }
+}
+
+@media (max-width: 1100px) {
+  #market-map .landscape-lens,
+  #endgame .outcome-diagram {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+
+  #market-map .landscape-lens {
+    padding: 26px;
+  }
+
+  .landscape-lens__axes,
+  #endgame .outcome-diagram__inputs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .landscape-lens__axes {
+    gap: 12px;
+  }
+
+  .landscape-lens__axes > div,
+  #endgame .outcome-diagram__inputs > div {
+    grid-template-columns: 1fr;
+    align-content: start;
+  }
+
+  .landscape-lens__axes > div {
+    min-height: 126px;
+    padding: 15px;
+  }
+
+  .landscape-lens__result {
+    min-height: 64px;
+  }
+
+  #endgame .outcome-diagram__inputs > div {
+    min-height: 118px;
+  }
+
+  #endgame .outcome-diagram__inputs span {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .landscape-lens__axes,
+  #endgame .outcome-diagram__inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .landscape-lens__axes > div,
+  #endgame .outcome-diagram__inputs > div {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 0;
   }
 }
