@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Average&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=15" />
+    <link rel="stylesheet" href="styles.css?v=16" />
   </head>
   <body>
     <div class="site-grain" aria-hidden="true"></div>
@@ -37,17 +37,16 @@
             </div>
           </div>
           <div class="hero-visual" aria-hidden="true">
-            <div class="brain-cloud">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="hero-scene">
+              <img src="assets/neurotech-hero-3d.jpg" alt="" />
+              <span class="hero-scene__orbit hero-scene__orbit--one"></span>
+              <span class="hero-scene__orbit hero-scene__orbit--two"></span>
+              <span class="hero-scene__scan"></span>
+              <span class="hero-scene__node hero-scene__node--one"></span>
+              <span class="hero-scene__node hero-scene__node--two"></span>
+              <span class="hero-scene__node hero-scene__node--three"></span>
             </div>
-            <p>signals → decoding → stimulation → adaptation</p>
+            <p>read · decode · write · adapt</p>
           </div>
         </div>
       </div>
@@ -251,11 +250,9 @@
                 <strong>different first jobs</strong>.
               </p>
               <p>
-                Instead of a matrix, this version reads as a set of pathways.
-                Start at the lowest-burden interface paths and move toward the
-                highest-burden ones. Inside each path, companies are grouped by
-                their first real job: assistive, therapeutic, sensory, or
-                infrastructure.
+                Read left to right as procedural burden rises, then scan down by
+                the first job the product must do. Filter the rows to isolate a
+                market, and open any company for the evidence-backed dossier.
               </p>
               <p>
                 Companies sharing an interface path are often closer procedural
@@ -265,12 +262,12 @@
             </div>
             <aside class="chapter-aside">
               <div class="chapter-visual chapter-visual--pathways" aria-hidden="true">
-                <div class="pathway-trace">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+                <div class="landscape-prism">
+                  <span data-label="Non-invasive"></span>
+                  <span data-label="Peripheral"></span>
+                  <span data-label="Surface"></span>
+                  <span data-label="Targeted"></span>
+                  <span data-label="Deep implant"></span>
                 </div>
               </div>
             </aside>
@@ -519,6 +516,6 @@
       <div class="company-modal__content" id="company-modal-content"></div>
     </dialog>
 
-    <script src="app.js?v=15"></script>
+    <script src="app.js?v=16"></script>
   </body>
 </html>

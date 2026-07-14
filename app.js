@@ -1367,9 +1367,11 @@ const companyDetails = {
 
 const companyMedia = {
   neuralink: {
-    src: "https://resizer.ladbiblegroup.com/unsafe/rs:fit:1200:0:0:0/g:sm/q:70/aHR0cHM6Ly9ldS1pbWFnZXMuY29udGVudHN0YWNrLmNvbS92My9hc3NldHMvYmx0YjVkOTI3NTdhYzFlZTA0NS9ibHQzZThjZmUzYzUwMGFjNmI3LzY2NDM3YWY1MmM4NWMyNzQ5NWFjOTY3Ny9uZXVyYWxpbmstbWFsZnVuY3Rpb24yLnBuZw.webp",
-    ref: "https://www.uniladtech.com/news/tech-news/neuralink-first-human-brain-implant-has-malfunction-975199-20240514",
-    label: "Link device image via UNILAD Tech",
+    src: "assets/companies/neuralink-link.webp",
+    ref: "https://neuralink.com/technology/",
+    label: "Official Link implant casing",
+    alt: "Exploded view of the Neuralink Link implant casing",
+    kind: "Official hardware",
   },
   precision: {
     src: "https://cdn.sanity.io/images/883wn8od/production/9963e33092a8ab996a184d32a85576442c2826af-607x1080.jpg",
@@ -1377,9 +1379,11 @@ const companyMedia = {
     label: "Official Layer 7 device render",
   },
   synchron: {
-    src: "https://assets.newatlas.com/dims4/default/ae8978d/2147483647/strip/true/crop/1046x625+0+0/resize/1200x717!/format/webp/quality/85/?url=https%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F84%2Fc7%2F1a019c1c498797cfcc75ad435e4e%2Fscreenshot-2023-06-26-at-6.29.32%20pm.png",
-    ref: "https://newatlas.com/computers/synchron-stentrode-brain-interface/",
-    label: "Stentrode close-up via New Atlas",
+    src: "assets/companies/synchron-stentrode.webp",
+    ref: "https://synchron.com/technology",
+    label: "Official Stentrode close-up",
+    alt: "Synchron Stentrode endovascular electrode array",
+    kind: "Official hardware",
   },
   paradromics: {
     src: "https://paradromics.com/wp-content/uploads/2026/07/Paradromics-Brain-Computer-Interface-Platform-Company.png",
@@ -1398,8 +1402,10 @@ const companyMedia = {
   },
   motif: {
     src: "https://cdn.prod.website-files.com/671bc5b6f9174731bd5bd829/68700827ad5617f086406124_Home%20-%20Open%20Graph%20(1).png",
-    ref: "https://motifneuro.tech/",
-    label: "Official DOT device image",
+    ref: "https://motifneuro.tech/technology",
+    label: "Official DOT system concept render",
+    alt: "Motif DOT device shown in an official system concept render",
+    kind: "Official concept render",
   },
   nudge: {
     src: "https://nudge.com/static/device_real_image_back_cover.jpg",
@@ -1407,14 +1413,18 @@ const companyMedia = {
     label: "Official Nudge Zero image",
   },
   cognixion: {
-    src: "https://static1.squarespace.com/static/5a0c82936957da9f556f5c30/t/636aa6a71cc53c79c13e96a9/1667933863273/Cognixion+ONE+-+Side.jpeg?format=1500w",
+    src: "assets/companies/cognixion-axon-r.webp",
     ref: "https://www.cognixion.com/",
-    label: "Official product image",
+    label: "Official Axon-R system image",
+    alt: "Cognixion Axon-R headset and companion hardware",
+    kind: "Official hardware",
   },
   forest: {
-    src: "https://freight.cargo.site/w/1000/i/F2779185421158430922335596844738/screenshot-0063979962.jpg",
-    ref: "https://forestneurotech.org/",
-    label: "Official Forest 1 image",
+    src: "assets/companies/forest-1.jpg",
+    ref: "https://forestneurotech.org/forest-1",
+    label: "Official Forest 1 system render",
+    alt: "Forest 1 ultrasound neural interface hardware",
+    kind: "Official hardware",
   },
   blackrock: {
     src: "https://blackrockneurotech.com/wp-content/uploads/2023/05/Group-858.png",
@@ -2051,9 +2061,10 @@ function productMediaHtml(company, size = "card") {
 
   return `
     <figure class="product-media product-media--${size}">
+      <span class="product-media__provenance">${company.media.kind || "Official image"}</span>
       <img
         src="${company.media.src}"
-        alt="${company.name} device image"
+        alt="${company.media.alt || `${company.name} product image`}"
         loading="lazy"
         referrerpolicy="no-referrer"
       />
@@ -2065,96 +2076,112 @@ function productMediaHtml(company, size = "card") {
 function renderMarketMap() {
   const plot = $("#market-map-plot");
   plot.innerHTML = `
-    <div class="pathway-list">
-      ${landscapeColumns
-        .map((column, index) => {
-          const laneCompanies = companies.filter(
-            (company) => company.landscape?.col === column.key
-          );
-
-          const groups = landscapeRows
-            .map((row) => ({
-              row,
-              companies: laneCompanies.filter(
-                (company) => company.landscape?.row === row.key
-              ),
-            }))
-            .filter((group) => group.companies.length);
-
-          return `
-            <section class="pathway-band pathway-band--${column.key}">
-              <div class="pathway-band__meta">
-                <p class="pathway-band__index">Path ${index + 1}</p>
-                <h3>${column.label}</h3>
-                <p class="pathway-band__burden">${pathwayBurden[column.key]}</p>
-                <p class="pathway-band__note">${column.note}</p>
-              </div>
-              <div class="pathway-band__groups">
-                ${groups
-                  .map(
-                    (group) => `
-                      <section class="pathway-group">
-                        <div class="pathway-group__head">
-                          <h4>${group.row.label}</h4>
-                          <p>${group.row.note}</p>
-                        </div>
-                        <div class="pathway-company-list">
-                          ${group.companies
-                            .map(
-                              (company) => `
-                                <button
-                                  type="button"
-                                  class="pathway-company pathway-company--${company.category}"
-                                  data-company="${company.id}"
-                                  aria-label="Open ${company.name} dossier"
-                                >
-                                  <div class="pathway-company__visual">
-                                    ${productMediaHtml(company, "mini")}
-                                  </div>
-                                  <div class="pathway-company__copy">
-                                    <strong>${company.name}</strong>
-                                    <p>${company.product.device}</p>
-                                    <span class="company-stage company-stage--${company.signal.key}">${company.signal.stage}</span>
-                                  </div>
-                                </button>
-                              `
-                            )
-                            .join("")}
-                        </div>
-                      </section>
-                    `
-                  )
-                  .join("")}
-              </div>
-            </section>
-          `;
-        })
-        .join("")}
+    <div class="landscape-toolbar" aria-label="Filter landscape by first job">
+      <div>
+        <p class="landscape-toolbar__eyebrow">Explore by first job</p>
+        <div class="landscape-filters">
+          <button type="button" class="filter-chip is-active" data-landscape-filter="all" aria-pressed="true">All markets</button>
+          ${landscapeRows.map((row) => `<button type="button" class="filter-chip" data-landscape-filter="${row.key}" aria-pressed="false">${row.label}</button>`).join("")}
+        </div>
+      </div>
+      <p class="landscape-summary" id="landscape-summary" aria-live="polite">${companies.length} companies across 5 interface paths</p>
+    </div>
+    <div class="landscape-scroll" tabindex="0" aria-label="Company landscape matrix; scroll horizontally on small screens">
+      <div class="landscape-matrix">
+        <div class="landscape-axis">
+          <span>First job ↓</span>
+          <strong>Procedure burden →</strong>
+        </div>
+        ${landscapeColumns.map((column, index) => `
+          <div class="landscape-column-head landscape-column-head--${column.key}">
+            <span>0${index + 1} · ${pathwayBurden[column.key]}</span>
+            <strong>${column.label}</strong>
+            <p>${column.note}</p>
+          </div>
+        `).join("")}
+        ${landscapeRows.map((row) => `
+          <div class="landscape-row" data-landscape-row="${row.key}">
+            <div class="landscape-row-head">
+              <strong>${row.label}</strong>
+              <p>${row.note}</p>
+            </div>
+            ${landscapeColumns.map((column) => {
+              const cellCompanies = companies.filter((company) =>
+                company.landscape?.row === row.key && company.landscape?.col === column.key
+              );
+              return `
+                <div class="landscape-cell landscape-cell--${column.key}">
+                  ${cellCompanies.length ? cellCompanies.map((company) => `
+                    <button
+                      type="button"
+                      class="landscape-company landscape-company--${company.category}"
+                      data-company="${company.id}"
+                      aria-label="Open ${company.name} dossier"
+                    >
+                      <span class="landscape-company__topline">
+                        <strong>${company.name}</strong>
+                        <i class="company-stage company-stage--${company.signal.key}" aria-label="${company.signal.stage}"></i>
+                      </span>
+                      <span>${company.product.device}</span>
+                    </button>
+                  `).join("") : `<span class="landscape-empty">No tracked company</span>`}
+                </div>
+              `;
+            }).join("")}
+          </div>
+        `).join("")}
+      </div>
     </div>
   `;
 
   $("#market-legend").innerHTML = `
     <div class="market-legend__items">
-      ${marketLegend
-        .map(
-          (item) => `
+      ${[
+          { label: "Preclinical", color: "#7c8ece" },
+          { label: "Early human", color: "#b88b95" },
+          { label: "Regulated clinical", color: "#cea164" },
+          { label: "Commercial", color: "#71a8a8" },
+        ].map((item) => `
             <div class="legend-item">
               <span class="legend-dot" style="background:${item.color}"></span>
               <span>${item.label}</span>
             </div>
-          `
-        )
-        .join("")}
+          `).join("")}
     </div>
     <div class="market-legend__note">
-      <strong>What this teaches</strong>
+      <strong>How to read the map</strong>
       <p>
-        The field is easier to understand as a sequence of interface paths:
-        low-burden systems, targeted therapies, middle-path cortical access,
-        and high-bandwidth implants, each with different first jobs.
+        Horizontal position is interface burden, not a quality ranking. Dots show
+        maturity: blue is preclinical, rose early human, copper regulated clinical,
+        and teal commercial. Select a company to open its dossier.
       </p>
     </div>
   `;
+}
+
+function setupLandscapeFilters() {
+  const controls = Array.from(document.querySelectorAll("[data-landscape-filter]"));
+  const rows = Array.from(document.querySelectorAll("[data-landscape-row]"));
+  const summary = $("#landscape-summary");
+
+  controls.forEach((control) => {
+    control.addEventListener("click", () => {
+      const filter = control.dataset.landscapeFilter;
+      controls.forEach((item) => {
+        const active = item === control;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      rows.forEach((row) => {
+        row.hidden = filter !== "all" && row.dataset.landscapeRow !== filter;
+      });
+      const visibleCompanies = filter === "all"
+        ? companies.length
+        : companies.filter((company) => company.landscape?.row === filter).length;
+      const label = landscapeRows.find((row) => row.key === filter)?.label || "all markets";
+      summary.textContent = `${visibleCompanies} ${visibleCompanies === 1 ? "company" : "companies"} · ${label}`;
+    });
+  });
 }
 
 function renderUseCases() {
@@ -2486,6 +2513,53 @@ function setupRailHighlight() {
   window.addEventListener("resize", updateActiveLink);
 }
 
+function setupRevealMotion() {
+  const targets = Array.from(document.querySelectorAll(
+    ".chapter, .field-brief, .ecosystem-card, .player-row"
+  ));
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    targets.forEach((target) => target.classList.add("is-revealed"));
+    return;
+  }
+
+  document.body.classList.add("motion-ready");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-revealed");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8%", threshold: 0.08 });
+
+  targets.forEach((target) => observer.observe(target));
+}
+
+function setupDepthMotion() {
+  const scene = document.querySelector(".hero-scene");
+  const precisePointer = window.matchMedia(
+    "(prefers-reduced-motion: no-preference) and (pointer: fine)"
+  ).matches;
+  if (!scene || !precisePointer) return;
+
+  scene.addEventListener("pointermove", (event) => {
+    const rect = scene.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    scene.style.setProperty("--tilt-x", `${(-y * 5).toFixed(2)}deg`);
+    scene.style.setProperty("--tilt-y", `${(x * 7).toFixed(2)}deg`);
+    scene.style.setProperty("--shift-x", `${(x * 8).toFixed(2)}px`);
+    scene.style.setProperty("--shift-y", `${(y * 8).toFixed(2)}px`);
+  });
+  scene.addEventListener("pointerleave", () => {
+    scene.style.removeProperty("--tilt-x");
+    scene.style.removeProperty("--tilt-y");
+    scene.style.removeProperty("--shift-x");
+    scene.style.removeProperty("--shift-y");
+  });
+}
+
 function init() {
   renderFieldBrief();
   renderSignalCards();
@@ -2500,9 +2574,12 @@ function init() {
   renderNextSteps();
   renderSources();
   renderEcosystem();
+  setupLandscapeFilters();
   setupFilters();
   setupDossiers();
   setupRailHighlight();
+  setupRevealMotion();
+  setupDepthMotion();
 }
 
 init();
