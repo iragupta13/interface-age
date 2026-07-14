@@ -11,10 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Average&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=20" />
+    <link rel="stylesheet" href="styles.css?v=21" />
   </head>
   <body>
     <div class="site-grain" aria-hidden="true"></div>
@@ -324,12 +324,32 @@
               <div class="essay-list essay-list--compact" id="bottleneck-list"></div>
             </div>
             <aside class="chapter-aside">
-              <div class="chapter-scene chapter-scene--constraint" aria-label="Signals converging through the field's narrowest constraints">
-                <div class="constraint-field" aria-hidden="true">
-                  <span></span><span></span><span></span><span></span><span></span>
+              <div class="chapter-scene chapter-scene--diagram bottleneck-diagram" role="img" aria-label="The translation gauntlet from a promising laboratory signal through biology, deployment, market, and trust gates to durable human value">
+                <div class="diagram-label">The translation gauntlet</div>
+                <div class="bottleneck-diagram__flow">
+                  <div class="bottleneck-diagram__stage bottleneck-diagram__stage--start">
+                    <span>Lab</span><strong>Promising signal</strong><small>A result works once</small>
+                  </div>
+                  <div class="bottleneck-diagram__gate">
+                    <span>01 · Biology</span><small>tissue response · healing · signal drift</small>
+                  </div>
+                  <div class="bottleneck-diagram__stage">
+                    <span>System</span><strong>Repeatable interface</strong><small>The result survives time</small>
+                  </div>
+                  <div class="bottleneck-diagram__gate">
+                    <span>02 · Deployment</span><small>surgery · onboarding · clinical workflow</small>
+                  </div>
+                  <div class="bottleneck-diagram__stage">
+                    <span>Product</span><strong>Usable in real life</strong><small>The burden is worth it</small>
+                  </div>
+                  <div class="bottleneck-diagram__gate">
+                    <span>03 · Market &amp; trust</span><small>reimbursement · privacy · vendor continuity</small>
+                  </div>
+                  <div class="bottleneck-diagram__stage bottleneck-diagram__stage--result">
+                    <span>Proof</span><strong>Durable human value</strong><small>Benefit compounds outside the demo</small>
+                  </div>
                 </div>
-                <div class="constraint-gate" aria-hidden="true"></div>
-                <p><span>signal</span><span>surgery</span><span>durability</span><span>workflow</span></p>
+                <p class="bottleneck-diagram__note">Every gate can stop an otherwise impressive technology.</p>
               </div>
             </aside>
           </div>
@@ -427,6 +447,6 @@
       <div class="company-modal__content" id="company-modal-content"></div>
     </dialog>
 
-    <script src="app.js?v=20"></script>
+    <script src="app.js?v=21"></script>
   </body>
 </html>
