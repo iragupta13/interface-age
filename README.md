@@ -1,45 +1,38 @@
 # The Interface Age
 
-A living field guide to neurotechnology: brain-computer interfaces, neuromodulation, sensory restoration, neural data, and the companies turning research into products.
+A practical map of how neurotechnology works, where it already helps, what still breaks, and who is building it.
 
-**[Read the live field guide](https://iragupta13.github.io/interface-age/)**
+**[Read the field guide](https://iragupta13.github.io/interface-age/)**
 
-## What is inside
+## What it covers
 
-The guide moves from first principles to the current landscape:
+- How neural systems read, write, and close the loop
+- The trade between signal quality and surgical burden
+- Sixteen company dossiers with linked evidence
+- Use cases that already work in people
+- The research, timeline, bottlenecks, and likely next steps
+- The labs, device makers, regulators, and payers behind the startups
 
-- How neural interfaces read, write, and close the loop
-- Core concepts such as invasiveness, bandwidth, decoding drift, and clinical workflow
-- Interface modalities and their technical tradeoffs
-- A 90-second field brief with maturity and evidence signals
-- Use cases, filterable company profiles, research evidence, and an industry timeline
-- The broader power map: incumbents, sensory-prosthetic leaders, labs, tooling, regulators, and payers
-- Bottlenecks, likely next steps, governance questions, and primary sources
+## The short version
 
-The current site includes 13 structured chapters, 200+ links, and inline citations designed to make a fast-moving field easier to navigate.
+Neurotech already works. People can move cursors, enter text, reduce tremor, and recover pieces of vision.
 
-## Design and implementation
+What is still missing is a system people can rely on for years. Durability, calibration, surgery, reimbursement, maintenance, and privacy now matter as much as the signal itself.
 
-- Semantic HTML with accessible heading and navigation structure
-- Custom responsive CSS and a long-form editorial visual system
-- Vanilla JavaScript for navigation, filtering, and interactive components
-- Responsive maturity filters and company dossiers designed for comparison
-- GitHub Pages for a lightweight, dependency-free deployment
+## Built with
+
+The site uses semantic HTML, custom CSS, and vanilla JavaScript. There is no framework and no build step. GitHub Pages handles deployment.
 
 ## Run locally
 
-No build step is required. Clone the repository and open `index.html`, or serve the directory locally:
+Clone the repository, then open `index.html` or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Visit `http://localhost:8000`.
 
-## Project status
+## Status
 
-Active research prototype. The full reading experience is live and functional; source coverage, company data, and accessibility refinements will continue to evolve as the field changes.
-
-## Why I built it
-
-Neurotechnology information is usually split between technical papers, company claims, clinical results, and speculative headlines. The Interface Age brings those layers into one readable, source-linked map of the field.
+Active research project. Sources, company data, and accessibility will keep changing with the field.
