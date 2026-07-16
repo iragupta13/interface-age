@@ -316,24 +316,24 @@ function cite(ids) {
 
 const signalCards = [
   {
-    title: "Useful outputs already exist",
+    title: "This already works",
     body:
-      `Cursor control, text entry, tremor relief, and early sensory restoration are not speculative anymore.${cite(["cala-home", "synchron-research", "science-prima"])}`,
+      `People can already move cursors, type, reduce tremor, and recover some vision.${cite(["cala-home", "synchron-research", "science-prima"])}`,
   },
   {
-    title: "Human evidence is compounding",
+    title: "More people have used it",
     body:
-      `Precision, Synchron, Science, and others now have stronger human-facing evidence than the field had just a few years ago.${cite(["precision-home", "synchron-home", "science-home"])}`,
+      `Human trials are growing across implanted, vascular, and sensory systems.${cite(["precision-home", "synchron-home", "science-home"])}`,
   },
   {
-    title: "Durability remains the exam",
+    title: "Years, not demos",
     body:
-      `Long-term access, recalibration, device maintenance, and upgrade paths are still central unresolved issues in implanted systems.${cite(["forever-access"])}`,
+      `The open question is whether implants stay useful, serviceable, and supported for years.${cite(["forever-access"])}`,
   },
   {
-    title: "Governance matters early",
+    title: "The rules cannot wait",
     body:
-      `The ethical problems are not future-only. They are already baked into questions of privacy, lock-in, and long-term dependency.${cite(["bci-regulation", "forever-access"])}`,
+      `Privacy, vendor lock-in, and long-term support are problems now, not later.${cite(["bci-regulation", "forever-access"])}`,
   },
 ];
 
@@ -341,61 +341,61 @@ const primerItems = [
   {
     title: "Read",
     body:
-      "A read system senses neural activity and tries to infer intention, state, symptom, or latent cognitive signal. This can mean decoding a movement goal, detecting tremor-relevant patterns, or inferring focus or fatigue.",
+      "A read system records neural activity and looks for something useful: a movement, a symptom, focus, or fatigue.",
   },
   {
     title: "Write",
     body:
-      "A write system stimulates tissue or peripheral pathways to change what the body or brain is doing. Deep brain stimulation, retinal prosthetics, tremor wearables, and sacral neuromodulation all live in this camp.",
+      "A write system stimulates the brain or nerves to change an outcome. Deep brain stimulation, retinal implants, and tremor wearables all do this.",
   },
   {
     title: "Close the loop",
     body:
-      "The most powerful systems sense and intervene together. They monitor what the nervous system is doing, decide what should happen next, and adjust over time rather than firing in a fixed one-way pattern.",
+      "A closed-loop system reads and writes. It measures what happened, then adjusts the next action.",
   },
   {
     title: "Ship the full stack",
     body:
-      "A chip or headset alone is not the product. The real product is biology, interface design, algorithms, patient or user training, clinician workflow, safety monitoring, and ongoing support.",
+      "The device is only one part of the product. Surgery, software, training, clinical care, and support have to work with it.",
   },
 ];
 
 const concepts = [
   {
-    title: "Invasiveness is a trade, not a morality play",
+    title: "Closer signals come with harder procedures",
     body:
-      `<p>The closer an interface gets to neurons, the richer the signal or control can become. But each step closer increases contact with tissue, increases procedural burden, and often increases long-term biological risk.</p>
-       <p>That is why the field has split into multiple serious camps rather than converging on one universal winner: non-invasive wearables, ultrasound systems, surface arrays, endovascular implants, and penetrating intracortical systems are each making a different trade.${cite(["nature-endo", "forest-home"])}</p>`,
+      `<p>Move closer to neurons and the signal usually improves. So do the risks from surgery, tissue contact, and long-term use.</p>
+       <p>That is why there is no universal winner. Wearables, ultrasound, surface arrays, vascular implants, and penetrating electrodes each give up something different.${cite(["nature-endo", "forest-home"])}</p>`,
   },
   {
-    title: "Bandwidth matters, but only relative to the job",
+    title: "Bandwidth depends on the job",
     body:
-      `<p>People often talk about BCI bandwidth as if it were a single scoreboard. It is more useful to ask how much information a task really needs.</p>
-       <p>Speech restoration and fine motor control may demand very rich, stable signals. Tremor relief or fatigue sensing can create real value with much lower information throughput. Many impressive companies are not racing toward the same target at all.${cite(["paradromics-home", "cala-home", "neurable-home"])}</p>`,
+      `<p>Bandwidth is not one scoreboard. The useful amount depends on the task.</p>
+       <p>Speech and fine movement need rich, stable signals. Tremor relief and fatigue sensing can work with much less. These products are not chasing the same target.${cite(["paradromics-home", "cala-home", "neurable-home"])}</p>`,
   },
   {
-    title: "Decoding is inference under drift",
+    title: "Signals drift",
     body:
-      `<p>Neural signals are noisy, user-specific, state-dependent, and not perfectly stationary across days or months. The decoder is trying to infer useful meaning from changing biological evidence.</p>
-       <p>This is why calibration, model updates, day-to-day adaptation, and interface design matter so much. A good demo once is easy compared with a usable system over time.${cite(["forever-access"])}</p>`,
+      `<p>Neural signals are noisy and they change with the person, the day, and the device. A decoder has to keep finding meaning in a moving signal.</p>
+       <p>That makes calibration and model updates part of daily use. One good session is much easier than a system that works every morning.${cite(["forever-access"])}</p>`,
   },
   {
-    title: "Stimulation is control, not magic",
+    title: "Stimulation steers; it does not command",
     body:
-      `<p>To write to the nervous system is to bias, modulate, or steer circuits, not to issue precise software-like commands into a blank system.</p>
-       <p>That matters because therapies often need patient-specific tuning, careful target selection, and closed-loop adaptation. Neuromodulation is powerful precisely because the nervous system is dynamic, not because it is simple.${cite(["cala-home", "neuspera-home", "inbrain-home"])}</p>`,
+      `<p>Stimulation nudges a living circuit. It does not send clean software commands into the brain.</p>
+       <p>Targets and settings have to be tuned for each patient, then adjusted as the nervous system changes.${cite(["cala-home", "neuspera-home", "inbrain-home"])}</p>`,
   },
   {
     title: "Surgery is part of the product",
     body:
-      `<p>For implanted systems, the implantation workflow is one of the product's main surfaces. Duration, reversibility, who can perform it, where it fits in hospital operations, and how follow-up is handled all shape adoption.</p>
-       <p>A company can have strong technical claims and still lose if its clinical workflow is too hard to scale.${cite(["precision-home", "synchron-home", "neuralink-home"])}</p>`,
+      `<p>For an implant, the procedure is part of the product. Time in the operating room, reversibility, follow-up, and who can perform it all shape adoption.</p>
+       <p>A good device can still fail if hospitals cannot fit it into real care.${cite(["precision-home", "synchron-home", "neuralink-home"])}</p>`,
   },
   {
-    title: "Clinical evidence beats spectacle",
+    title: "Count people, time, and outcomes",
     body:
-      `<p>The field produces unusually dramatic demos, so it is easy to mistake narrative heat for maturity. Better questions are: how many humans, for how long, in what study design, with what failure modes, and with what functional gain?</p>
-       <p>Those questions matter more than livestreams, channel counts, or CEO rhetoric.${cite(["jama-stentrode", "nejm-prima", "neuralink-roundup"])}</p>`,
+      `<p>Neurotech makes great demos. The useful questions are plainer: how many people, for how long, what failed, and did life improve?</p>
+       <p>Those answers matter more than a livestream or a channel count.${cite(["jama-stentrode", "nejm-prima", "neuralink-roundup"])}</p>`,
   },
 ];
 
@@ -462,9 +462,9 @@ const companies = [
     x: 88,
     y: 44,
     blurb:
-      `The most visible intracortical BCI company, combining thin implanted threads with a robotic implantation story and unusually aggressive long-term ambition.${cite(["neuralink-home", "neuralink-roundup"])}`,
+      `Thin brain implants placed by a surgical robot. It is the field's most visible bet on high-bandwidth assistive BCI.${cite(["neuralink-home", "neuralink-roundup"])}`,
     summary:
-      `Neuralink matters because it is testing whether a very high-ambition, high-bandwidth assistive interface can become a repeatable platform rather than just a headline magnet.${cite(["neuralink-home", "neuralink-roundup"])}`,
+      `The test is whether Neuralink can turn striking demos into a repeatable implant that works for years.${cite(["neuralink-home", "neuralink-roundup"])}`,
     traction:
       "Early human trial with publicly reported participant growth, but comparatively thin public technical detail.",
     dossier: {
@@ -492,9 +492,9 @@ const companies = [
     x: 63,
     y: 80,
     blurb:
-      `A minimally invasive surface-interface company making one of the clearest bets in the field: signal quality matters, but workflow realism matters too.${cite(["precision-home"])}`,
+      `A thin array that sits on the brain's surface. The bet is a stronger signal without penetrating tissue.${cite(["precision-home"])}`,
     summary:
-      `Precision is one of the strongest examples of a company optimizing for a practical middle ground between invasive fidelity and clinical deployability.${cite(["precision-home"])}`,
+      `Precision is testing a practical middle ground between signal quality and surgical burden.${cite(["precision-home"])}`,
     traction:
       "Publicly reports Layer 7 510(k) clearance, 85+ implanted study patients, and 15+ hospital partners.",
     dossier: {
@@ -522,9 +522,9 @@ const companies = [
     x: 70,
     y: 76,
     blurb:
-      `An endovascular BCI company betting that vascular access and interventional workflow can matter as much as raw neural bandwidth.${cite(["synchron-home", "jama-stentrode"])}`,
+      `A brain interface delivered through a blood vessel, avoiding open brain surgery.${cite(["synchron-home", "jama-stentrode"])}`,
     summary:
-      `Synchron is one of the field's cleanest alternate theses: useful assistive BCIs may scale more easily if they avoid open brain surgery.${cite(["synchron-home", "nature-endo"])}`,
+      `Synchron trades some signal access for a procedure that interventional teams already understand.${cite(["synchron-home", "nature-endo"])}`,
     traction:
       "U.S. and Australia trial activity with published safety evidence and a differentiated implantation path.",
     dossier: {
@@ -552,9 +552,9 @@ const companies = [
     x: 85,
     y: 52,
     blurb:
-      `A high-data-rate intracortical company centered on restoring rapid communication, especially speech-related output.${cite(["paradromics-home"])}`,
+      `A high-data-rate brain implant built first for communication and speech.${cite(["paradromics-home"])}`,
     summary:
-      `Paradromics matters because speech restoration may become one of the highest-value wedges in all of neurotech.${cite(["paradromics-home"])}`,
+      `Paradromics is testing whether more bandwidth can restore fast, useful speech.${cite(["paradromics-home"])}`,
     traction:
       "Publicly states FDA-cleared human study status and first-in-human activity in 2026.",
     dossier: {
@@ -582,9 +582,9 @@ const companies = [
     x: 72,
     y: 79,
     blurb:
-      `A broad neural engineering company whose PRIMA retinal implant program is one of the clearest sensory-restoration stories in the field.${cite(["science-home", "nejm-prima"])}`,
+      `A neural engineering company whose PRIMA retinal implant aims to restore central vision.${cite(["science-home", "nejm-prima"])}`,
     summary:
-      `Science is a reminder that neurotech is not only about controlling cursors. Restoring sensory function may become one of the field's most important categories.${cite(["science-prima", "nejm-prima"])}`,
+      `Science shows that neurotech can restore sensation, not just control a cursor.${cite(["science-prima", "nejm-prima"])}`,
     traction:
       "Large 2026 financing round and strong public clinical milestone around PRIMA.",
     dossier: {
@@ -612,9 +612,9 @@ const companies = [
     x: 66,
     y: 62,
     blurb:
-      `A graphene-based neural therapy company blending BCI language with closed-loop therapeutic intent around disorders such as Parkinson's disease.${cite(["inbrain-home"])}`,
+      `A graphene brain interface built for closed-loop treatment, including Parkinson's disease.${cite(["inbrain-home"])}`,
     summary:
-      `INBRAIN matters because it sits at the intersection of advanced materials, bidirectional interfaces, and therapeutics rather than pure “telepathy” narratives.${cite(["inbrain-home"])}`,
+      `INBRAIN combines a new electrode material with sensing and stimulation in the same system.${cite(["inbrain-home"])}`,
     traction:
       "Public FDA Breakthrough Device Designation and first human implant announcement.",
     dossier: {
@@ -642,9 +642,9 @@ const companies = [
     x: 61,
     y: 38,
     blurb:
-      `A mental-health neurotech company focused on treatment-resistant depression and the possibility of monitoring and regulating mental states nearer their source.${cite(["motif-home"])}`,
+      `A small brain implant being developed for treatment-resistant depression.${cite(["motif-home"])}`,
     summary:
-      `Motif is important because psychiatric neurotechnology could become one of the field's largest opportunities if it proves both effective and ethically navigable.${cite(["motif-home"])}`,
+      `Motif is an early test of whether psychiatric symptoms can be treated with a targeted neural device.${cite(["motif-home"])}`,
     traction:
       "Registry and clinical-readiness phase, with public 2026 first-in-human framing through media and company materials.",
     dossier: {
@@ -672,9 +672,9 @@ const companies = [
     x: 33,
     y: 28,
     blurb:
-      `A reported private ultrasound neurotech startup associated with Fred Ehrsam and former Neuralink personnel, described publicly as aiming for non-invasive whole-brain interfaces and longer-term applications in mood, cognition, and sleep.${cite(["nudge-reported"])}`,
+      `A private ultrasound neurotech startup with little public technical data so far.${cite(["nudge-reported"])}`,
     summary:
-      `Nudge belongs on the map because it shows how capital is moving toward non-invasive and potentially neuromodulatory neural interfaces, even before the evidence base is public and mature.${cite(["nudge-reported"])}`,
+      `Nudge shows how much capital is moving toward non-invasive interfaces before the evidence is public.${cite(["nudge-reported"])}`,
     traction:
       "Reported 2025 Series A and research-device activity, but public primary source detail remains sparse.",
     dossier: {
@@ -702,9 +702,9 @@ const companies = [
     x: 24,
     y: 63,
     blurb:
-      `A non-invasive assistive neurotech company combining brain input, eye tracking, head pose, and assisted-reality software for communication and control.${cite(["cognixion-home"])}`,
+      `A non-invasive communication system that combines brain signals, eye tracking, and head movement.${cite(["cognixion-home"])}`,
     summary:
-      `Cognixion is a good reminder that neurotech products can be won through multimodal usability, not only through purist signal metrics.${cite(["cognixion-home"])}`,
+      `Cognixion bets that a useful product can combine several imperfect inputs.${cite(["cognixion-home"])}`,
     traction:
       "Multiple 2025-2026 announcements, research partnerships, and a strong assistive framing.",
     dossier: {
@@ -732,9 +732,9 @@ const companies = [
     x: 29,
     y: 34,
     blurb:
-      `A focused research organization building ultrasound-based neural interfaces that could access deeper structures without penetrating tissue directly.${cite(["forest-home"])}`,
+      `An ultrasound interface designed to reach deeper brain structures without penetrating tissue.${cite(["forest-home"])}`,
     summary:
-      `Forest matters because it represents one of the most conceptually important alternate interface paths in the field: different physics, not just better electrodes.${cite(["forest-home"])}`,
+      `Forest is testing different physics rather than another kind of electrode.${cite(["forest-home"])}`,
     traction:
       "Research platform stage with public Forest 1 device framing.",
     dossier: {
@@ -762,9 +762,9 @@ const companies = [
     x: 74,
     y: 69,
     blurb:
-      `A foundational neurotech infrastructure company with deep research roots and unusually long human-study history.${cite(["blackrock-home"])}`,
+      `A research hardware and software company with decades of human BCI experience.${cite(["blackrock-home"])}`,
     summary:
-      `Blackrock matters because fields become real through instruments, software, datasets, clinicians, and institutional familiarity, not only through flashy startups.${cite(["blackrock-home"])}`,
+      `Blackrock supplies the tools and clinical history behind much of the field.${cite(["blackrock-home"])}`,
     traction:
       "Publicly reports 19+ years of human studies, 30K+ implant research days, and 1,000+ research institutions.",
     dossier: {
@@ -792,9 +792,9 @@ const companies = [
     x: 18,
     y: 92,
     blurb:
-      `A neurotech company showing that symptom relief, reimbursement, and everyday usability can matter more than sci-fi rhetoric.${cite(["cala-home"])}`,
+      `A wrist-worn therapy for tremor with FDA clearance and Medicare coverage.${cite(["cala-home"])}`,
     summary:
-      `Cala deserves more attention than it gets because it is one of the clearest examples of neurotech with real present-day commercial and reimbursement traction.${cite(["cala-home"])}`,
+      `Cala shows that a focused neural therapy can become an everyday product.${cite(["cala-home"])}`,
     traction:
       "FDA-cleared product, Medicare coverage, and therapy designed for routine use.",
     dossier: {
@@ -822,9 +822,9 @@ const companies = [
     x: 56,
     y: 96,
     blurb:
-      `A responsive neurostimulation company proving that neurotech can already sense abnormal brain activity, intervene in real time, and feed clinically useful data back into care.${cite(["neuropace-home"])}`,
+      `An implanted epilepsy system that detects abnormal activity and stimulates in response.${cite(["neuropace-home"])}`,
     summary:
-      `NeuroPace belongs near the center of this field because it shows that closed-loop neurotechnology is not a future-only concept. In one important disease area, it is already a real treatment category.${cite(["neuropace-home"])}`,
+      `NeuroPace proves that closed-loop neurotechnology is already a treatment, not just a research idea.${cite(["neuropace-home"])}`,
     traction:
       "Commercial FDA-approved therapy with a mature clinical and provider ecosystem around drug-resistant focal epilepsy.",
     dossier: {
@@ -852,9 +852,9 @@ const companies = [
     x: 41,
     y: 87,
     blurb:
-      `An implantable therapy company using an integrated sacral neuromodulation architecture for urinary urge incontinence and overactive bladder.${cite(["neuspera-home"])}`,
+      `An implanted sacral nerve therapy for urinary urge incontinence and overactive bladder.${cite(["neuspera-home"])}`,
     summary:
-      `Neuspera matters because it represents the less glamorous but highly real branch of neurotech that wins through targeted therapeutic workflows.${cite(["neuspera-home"])}`,
+      `Neuspera represents the quieter branch of neurotech built around one clear clinical job.${cite(["neuspera-home"])}`,
     traction:
       "Publicly states FDA approval in June 2025 for its integrated sacral neuromodulation system.",
     dossier: {
@@ -882,9 +882,9 @@ const companies = [
     x: 35,
     y: 78,
     blurb:
-      `A clinical-stage neuromodulation company focused on resistant migraine, using ultra-thin implants and an everyday-use therapy model rather than a hospital-only neurotech story.${cite(["salvia-home"])}`,
+      `An ultra-thin implanted therapy being developed for resistant migraine.${cite(["salvia-home"])}`,
     summary:
-      `Salvia matters because migraine is a massive unmet-need market, and its product framing makes neurotech look like disciplined medtech instead of frontier spectacle.${cite(["salvia-home"])}`,
+      `Salvia treats neurotech like disciplined medtech: one disease, one workflow, measurable relief.${cite(["salvia-home"])}`,
     traction:
       "Clinical-stage development, active U.S. and Europe footprint, and a publicly announced $60M Series B financing round.",
     dossier: {
@@ -912,9 +912,9 @@ const companies = [
     x: 14,
     y: 54,
     blurb:
-      `A consumer-oriented BCI company trying to embed brain sensing into everyday wearables, with a focus on attention, fatigue, and usable form factor.${cite(["neurable-home"])}`,
+      `Brain sensing built into everyday headphones to track attention and fatigue.${cite(["neurable-home"])}`,
     summary:
-      `Neurable helps define the outer edge of what neurotech could look like if it escapes the clinic and lands in ordinary devices.${cite(["neurable-home"])}`,
+      `Neurable tests whether useful neural data can leave the clinic and live in ordinary devices.${cite(["neurable-home"])}`,
     traction:
       "Public research kit, consumer product direction, and a decade-long commercialization narrative.",
     dossier: {
@@ -1504,25 +1504,25 @@ const fieldBrief = [
   {
     eyebrow: "Mature now",
     title: "Disease-specific stimulation",
-    body: "The strongest commercial reality sits in focused therapies with measurable endpoints: epilepsy, tremor, movement disorders, pain, and peripheral neuromodulation.",
+    body: "The most established products treat specific problems with measurable outcomes: epilepsy, tremor, pain, and movement disorders.",
     tone: "teal",
   },
   {
     eyebrow: "Clinically real",
     title: "Assistive communication",
-    body: "Cursor control, text entry, speech decoding, and sensory restoration have crossed into meaningful human evidence, but most systems remain early and high-touch.",
+    body: "People have controlled cursors, entered text, decoded speech, and recovered some sensation. Most systems still need heavy support.",
     tone: "accent",
   },
   {
     eyebrow: "Still unproven",
     title: "Durable everyday BCI",
-    body: "The missing proof is years of reliable home use with low calibration burden, maintainable hardware, clear support, and benefits that beat existing interfaces.",
+    body: "What is missing is years of reliable home use with little calibration and clear support.",
     tone: "rose",
   },
   {
     eyebrow: "What decides winners",
     title: "Workflow over spectacle",
-    body: "Surgery, training, clinician time, reimbursement, service, and continuity of care will separate durable products from technically impressive demonstrations.",
+    body: "The winners will make surgery, training, care, payment, and support work—not just the device.",
     tone: "blue",
   },
 ];
@@ -1531,7 +1531,7 @@ const ecosystemGroups = [
   {
     kicker: "Established therapeutic devices",
     title: "The incumbents",
-    body: "Large medtech companies already own clinical channels, procedural training, reimbursement muscle, and long-lived stimulation portfolios.",
+    body: "Large device makers already have hospital relationships, trained clinicians, reimbursement, and products built to last.",
     players: [
       ["Medtronic", "https://www.medtronic.com/"],
       ["Abbott Neuromodulation", "https://www.neuromodulation.abbott/"],
@@ -1542,7 +1542,7 @@ const ecosystemGroups = [
   {
     kicker: "Sensory restoration",
     title: "The mature prosthetic branch",
-    body: "Cochlear implants are the clearest reminder that neural interfaces can become durable, global product categories rather than perpetual experiments.",
+    body: "Cochlear implants prove that a neural interface can become a routine global product.",
     players: [
       ["Cochlear", "https://www.cochlear.com/"],
       ["MED-EL", "https://www.medel.com/"],
@@ -1552,7 +1552,7 @@ const ecosystemGroups = [
   {
     kicker: "Translational research",
     title: "The labs behind the frontier",
-    body: "Many of the field's most important capabilities emerge from long-running academic teams before they become company roadmaps.",
+    body: "Much of the field starts in academic labs years before it becomes a company.",
     players: [
       ["BrainGate", "https://www.braingate.org/"],
       ["Stanford NPTL", "https://nptl.stanford.edu/"],
@@ -1562,7 +1562,7 @@ const ecosystemGroups = [
   {
     kicker: "Tools and data",
     title: "The enabling stack",
-    body: "Acquisition hardware, research software, electrodes, datasets, and developer access shape who can build and reproduce the next generation of systems.",
+    body: "Hardware, software, electrodes, and open tools decide who can build—and who can reproduce the result.",
     players: [
       ["Ripple Neuro", "https://rippleneuro.com/"],
       ["g.tec", "https://www.gtec.at/"],
@@ -1573,7 +1573,7 @@ const ecosystemGroups = [
   {
     kicker: "Translation and access",
     title: "The rule-setters",
-    body: "Regulators, public funders, hospital systems, and payers determine study design, evidence thresholds, access, and whether a product can become routine care.",
+    body: "Regulators, hospitals, funders, and payers decide what evidence counts and who gets access.",
     players: [
       ["NIH BRAIN Initiative", "https://braininitiative.nih.gov/"],
       ["DARPA BTO", "https://www.darpa.mil/research/programs/bto"],
@@ -1587,50 +1587,50 @@ const useCases = [
   {
     title: "Communication for paralysis and ALS",
     body:
-      `<p>This remains one of the clearest early wedges because the human need is obvious and the output surface is already digital. If someone can communicate faster, more accurately, or with less exhaustion than before, the value is immediate.</p>
-       <p>The hard part is making that capability durable enough to become a daily habit rather than an impressive session.${cite(["synchron-home", "paradromics-home", "neuralink-roundup"])}</p>`,
+      `<p>Communication is an obvious first use. If a person can type faster or speak with less effort, the benefit is immediate.</p>
+       <p>The hard part is making it reliable enough to use every day.${cite(["synchron-home", "paradromics-home", "neuralink-roundup"])}</p>`,
   },
   {
     title: "Computer and environment control",
     body:
-      `<p>Cursor movement, interface navigation, smart-home control, and digital autonomy are natural first uses because the world is already full of systems that can accept software commands.</p>
-       <p>This is why assistive BCI often looks most convincing when it stays close to computers and software first.${cite(["neuralink-roundup", "cognixion-home"])}</p>`,
+      `<p>Cursors, apps, and smart homes already accept software commands, so they are natural first targets.</p>
+       <p>Assistive BCI is most convincing when it first helps people use the digital world.${cite(["neuralink-roundup", "cognixion-home"])}</p>`,
   },
   {
     title: "Speech restoration",
     body:
-      `<p>Speech is one of the highest-value bandwidth problems in the field. Restoring fluid communication for people who have lost speech would be a major step change in autonomy and quality of life.</p>
-       <p>It is also one of the most demanding technical categories, which is why companies like Paradromics matter so much.${cite(["paradromics-home"])}</p>`,
+      `<p>Restoring speech would give people back speed, privacy, and independence. It also demands a rich, stable signal.</p>
+       <p>That makes speech one of the field's hardest and most valuable tests.${cite(["paradromics-home"])}</p>`,
   },
   {
     title: "Movement disorders and tremor",
     body:
-      `<p>Therapeutic neurotech is often ahead of the broader BCI narrative because it starts with clearer symptoms, clearer endpoints, and clearer reimbursement logic.</p>
-       <p>Cala is one of the cleanest examples of this branch working in the real world already.${cite(["cala-home"])}</p>`,
+      `<p>Therapeutic devices often move faster because the symptom, outcome, and payment path are clear.</p>
+       <p>Cala shows what this looks like in real use.${cite(["cala-home"])}</p>`,
   },
   {
     title: "Epilepsy and seizure control",
     body:
-      `<p>Epilepsy shows one of the strongest cases for closed-loop neurotechnology because the target problem is concrete: detect abnormal activity fast enough and intervene usefully enough to change outcomes.</p>
-       <p>NeuroPace is important here because it makes the loop visible: sensing, responding, and generating longitudinal neural data for care decisions, with long-run clinical literature to support that model.${cite(["neuropace-home", "rns-nine-year"])}</p>`,
+      `<p>Epilepsy is a natural closed-loop problem: detect abnormal activity, respond, then measure what changed.</p>
+       <p>NeuroPace already runs that loop and gives clinicians long-term neural data to guide care.${cite(["neuropace-home", "rns-nine-year"])}</p>`,
   },
   {
     title: "Migraine and severe headache disorders",
     body:
-      `<p>Migraine is a reminder that a huge share of neurotech value may come from targeted symptom control, not just direct computer control or futuristic cognition narratives.</p>
-       <p>Salvia's approach matters because it frames neurotech as a disease-focused intervention for a massive patient population with real day-to-day disability.${cite(["salvia-home"])}</p>`,
+      `<p>Much of neurotech's value may come from treating symptoms, not controlling computers.</p>
+       <p>Salvia applies that idea to resistant migraine, a large and disabling disease.${cite(["salvia-home"])}</p>`,
   },
   {
     title: "Psychiatric interfaces",
     body:
-      `<p>This may become one of the biggest categories eventually, but it is also one of the hardest. Mood and mental state are not as straightforward to decode or regulate as many public narratives imply.</p>
-       <p>That is why companies like Motif are fascinating and risky at the same time.${cite(["motif-home"])}</p>`,
+      `<p>Psychiatric interfaces could be a large category. They are also hard: mood is not a simple signal to read or tune.</p>
+       <p>Motif is an early test of whether this can be done safely and usefully.${cite(["motif-home"])}</p>`,
   },
   {
     title: "Sensory restoration",
     body:
-      `<p>Vision and related sensory interfaces show that neurotech is not just about controlling software. It can be about recovering real human function.</p>
-       <p>Science's PRIMA program is one of the clearest public examples of that path.${cite(["science-prima", "nejm-prima"])}</p>`,
+      `<p>Sensory interfaces can return a piece of the world, not just control a screen.</p>
+       <p>Science's PRIMA implant is one of the clearest examples.${cite(["science-prima", "nejm-prima"])}</p>`,
   },
 ];
 
@@ -1836,32 +1836,32 @@ const bottlenecks = [
   {
     title: "Biology pushes back",
     body:
-      "Scar tissue, micromotion, infection, vascular constraints, and healing changes make the body a hostile operating environment for precision electronics.",
+      "Scar tissue, tiny movements, infection, and healing all work against precision electronics.",
   },
   {
     title: "Signal drift is constant",
     body:
-      "What works on one day may shift the next. Neural systems change, users fatigue, and interfaces move relative to biology.",
+      "A signal that works today may move tomorrow. The user changes, the tissue changes, and the interface shifts.",
   },
   {
     title: "Therapy or interface burden is real",
     body:
-      "Even an outpatient or wearable product still needs onboarding, support, and evidence of lasting value. Implants add surgery, hospital workflows, and follow-up care.",
+      "Wearables still need setup and support. Implants add surgery, hospital time, and follow-up care.",
   },
   {
     title: "The market cares about reimbursement",
     body:
-      "A strong product can still stall if payers, providers, and care systems do not know how to fit it into real clinical economics.",
+      "A useful product can still fail if hospitals and insurers cannot fit it into care.",
   },
   {
     title: "Dependency raises ethical stakes",
     body:
-      `Patients and users may depend on these systems in unusually intimate ways, which makes portability, privacy, and vendor continuity much more than ordinary software questions.${cite(["forever-access", "bci-regulation"])}`,
+      `People may depend on these systems to communicate or function. Privacy, portability, and long-term support are therefore basic safety issues.${cite(["forever-access", "bci-regulation"])}`,
   },
   {
     title: "Hype distorts the field",
     body:
-      "When public expectations are set by dramatic claims rather than durable evidence, quieter but more mature progress can be overlooked and the whole category can absorb the backlash.",
+      "Hype pulls attention from slower clinical progress and makes every failure harder for the field to absorb.",
   },
 ];
 
@@ -1869,22 +1869,22 @@ const nextSteps = [
   {
     title: "Better communication systems first",
     body:
-      "Expect more near-term progress in assistive cursor control, text entry, and speech-related interfaces than in broad cognitive enhancement.",
+      "Expect cursor control, text entry, and speech systems to improve before broad cognitive enhancement.",
   },
   {
     title: "Therapeutic neurotech keeps moving",
     body:
-      "Disease-specific neuromodulation may continue to commercialize faster than the broad BCI frontier because the endpoints and payment logic are cleaner.",
+      "Disease-specific stimulation will likely reach patients faster because outcomes and payment are clearer.",
   },
   {
     title: "Closed-loop personalization becomes central",
     body:
-      "The real moat may move toward systems that sense, adapt, personalize, and update over time rather than just record or stimulate in one direction.",
+      "The strongest systems will sense, adapt, and retune over time instead of working in one direction.",
   },
   {
     title: "Non-invasive systems face a proving moment",
     body:
-      "The big question for non-invasive players is not whether they are safer. It is whether they can become useful enough to earn daily use and not just curiosity.",
+      "Non-invasive systems are easier to try. Now they have to become useful enough to keep using.",
   },
 ];
 
