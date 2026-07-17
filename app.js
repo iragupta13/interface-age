@@ -314,29 +314,6 @@ function cite(ids) {
     .join("");
 }
 
-const signalCards = [
-  {
-    title: "This already works",
-    body:
-      `People can already move cursors, type, reduce tremor, and recover some vision.${cite(["cala-home", "synchron-research", "science-prima"])}`,
-  },
-  {
-    title: "More people have used it",
-    body:
-      `Human trials are growing across implanted, vascular, and sensory systems.${cite(["precision-home", "synchron-home", "science-home"])}`,
-  },
-  {
-    title: "Years, not demos",
-    body:
-      `The open question is whether implants stay useful, serviceable, and supported for years.${cite(["forever-access"])}`,
-  },
-  {
-    title: "The rules cannot wait",
-    body:
-      `Privacy, vendor lock-in, and long-term support are problems now, not later.${cite(["bci-regulation", "forever-access"])}`,
-  },
-];
-
 const primerItems = [
   {
     title: "Read",
@@ -1585,203 +1562,224 @@ const ecosystemGroups = [
 
 const useCases = [
   {
-    title: "Communication for paralysis and ALS",
+    title: "Communication and speech restoration",
     body:
-      `<p>Communication is an obvious first use. If a person can type faster or speak with less effort, the benefit is immediate.</p>
-       <p>The hard part is making it reliable enough to use every day.${cite(["synchron-home", "paradromics-home", "neuralink-roundup"])}</p>`,
+      "<p>For people with paralysis or ALS, faster typing or restored speech can return daily independence. The test is whether it works reliably at home." +
+      cite(["synchron-home", "paradromics-home", "neuralink-roundup", "speech-fast-nejm"]) +
+      "</p>",
   },
   {
     title: "Computer and environment control",
     body:
-      `<p>Cursors, apps, and smart homes already accept software commands, so they are natural first targets.</p>
-       <p>Assistive BCI is most convincing when it first helps people use the digital world.${cite(["neuralink-roundup", "cognixion-home"])}</p>`,
-  },
-  {
-    title: "Speech restoration",
-    body:
-      `<p>Restoring speech would give people back speed, privacy, and independence. It also demands a rich, stable signal.</p>
-       <p>That makes speech one of the field's hardest and most valuable tests.${cite(["paradromics-home"])}</p>`,
+      "<p>Cursors, apps, and smart homes already accept software commands, making them natural first targets for assistive BCI." +
+      cite(["neuralink-roundup", "cognixion-home"]) +
+      "</p>",
   },
   {
     title: "Movement disorders and tremor",
     body:
-      `<p>Therapeutic devices often move faster because the symptom, outcome, and payment path are clear.</p>
-       <p>Cala shows what this looks like in real use.${cite(["cala-home"])}</p>`,
+      "<p>Clear symptoms and measurable outcomes have helped focused therapies such as Cala reach patients sooner." +
+      cite(["cala-home"]) +
+      "</p>",
   },
   {
     title: "Epilepsy and seizure control",
     body:
-      `<p>Epilepsy is a natural closed-loop problem: detect abnormal activity, respond, then measure what changed.</p>
-       <p>NeuroPace already runs that loop and gives clinicians long-term neural data to guide care.${cite(["neuropace-home", "rns-nine-year"])}</p>`,
+      "<p>NeuroPace detects abnormal activity, responds, and gives clinicians long-term data to guide care." +
+      cite(["neuropace-home", "rns-nine-year"]) +
+      "</p>",
   },
   {
-    title: "Migraine and severe headache disorders",
+    title: "Migraine",
     body:
-      `<p>Much of neurotech's value may come from treating symptoms, not controlling computers.</p>
-       <p>Salvia applies that idea to resistant migraine, a large and disabling disease.${cite(["salvia-home"])}</p>`,
+      "<p>Salvia applies targeted neuromodulation to resistant migraine, a large and disabling disease." +
+      cite(["salvia-home"]) +
+      "</p>",
   },
   {
-    title: "Psychiatric interfaces",
+    title: "Psychiatric treatment",
     body:
-      `<p>Psychiatric interfaces could be a large category. They are also hard: mood is not a simple signal to read or tune.</p>
-       <p>Motif is an early test of whether this can be done safely and usefully.${cite(["motif-home"])}</p>`,
+      "<p>Motif is testing whether a small implant can treat depression without pretending mood is a simple signal." +
+      cite(["motif-home"]) +
+      "</p>",
   },
   {
     title: "Sensory restoration",
     body:
-      `<p>Sensory interfaces can return a piece of the world, not just control a screen.</p>
-       <p>Science's PRIMA implant is one of the clearest examples.${cite(["science-prima", "nejm-prima"])}</p>`,
+      "<p>Science's PRIMA implant shows how an interface can restore part of a sense, not just control a screen." +
+      cite(["science-prima", "nejm-prima"]) +
+      "</p>",
   },
 ];
 
 const researchItems = [
   {
     kicker: "Communication BCIs",
-    title: "Speech restoration has become the clearest fast-moving frontier",
+    title: "Speech systems are getting faster",
     body:
-      `<p>The literature now shows a real progression rather than isolated miracles. Early papers established that cortical activity could be translated into text or synthetic speech; newer studies pushed toward larger vocabularies, faster calibration, and more natural conversation-like use.${cite(["speech-text-natneuro", "speech-anarthria-nejm", "handwriting-nature"])}</p>
-       <p>This matters for companies like Paradromics, Neuralink, and Precision because communication is one of the highest-value wedges in the field. Someone does not need “full telepathy” for the product to be life-changing. They need a system that restores practical, repeatable autonomy for people who cannot speak or type normally.${cite(["speech-neuroprosthesis", "speech-avatar", "speech-fast-nejm", "speech-bilingual"])}</p>`,
+      "<p>Research has moved from basic decoding to larger vocabularies, faster calibration, and more natural speech." +
+      cite(["speech-text-natneuro", "speech-fast-nejm"]) +
+      "</p>",
     papers: [
       {
         year: "2020",
         journal: "Nature Neuroscience",
         title: "Machine translation of cortical activity to text",
         takeaway:
-          `Helped define the modern encoder-decoder route for turning cortical activity into usable text rather than just coarse classification.${cite(["speech-text-natneuro"])}`,
+          "Established a modern route from cortical activity to usable text." +
+          cite(["speech-text-natneuro"]),
       },
       {
         year: "2021",
         journal: "NEJM + Nature",
         title: "Speech decoding and handwriting-based communication",
         takeaway:
-          `Showed two different but credible ways to restore communication: direct speech decoding in anarthria and rapid text entry through attempted handwriting.${cite(["speech-anarthria-nejm", "handwriting-nature"])}`,
+          "Demonstrated direct speech decoding and rapid text entry through attempted handwriting." +
+          cite(["speech-anarthria-nejm", "handwriting-nature"]),
       },
       {
         year: "2023",
         journal: "Nature",
         title: "62-78 words-per-minute speech systems arrive",
         takeaway:
-          `Two landmark papers reported 62 words per minute in an intracortical text-decoding system and 78 words per minute in a speech-text-avatar system using surface recordings.${cite(["speech-neuroprosthesis", "speech-avatar"])}`,
+          "Reported 62 and 78 words per minute across two neural communication systems." +
+          cite(["speech-neuroprosthesis", "speech-avatar"]),
       },
       {
         year: "2024",
         journal: "NEJM + Nat Biomed Eng",
         title: "Calibration gets faster and outputs get more expressive",
         takeaway:
-          `A newer speech neuroprosthesis reported 99.6% accuracy on a 50-word vocabulary on day one, then scaled to a 125,000-word vocabulary after limited extra calibration, while a separate study showed bilingual decoding across languages.${cite(["speech-fast-nejm", "speech-bilingual"])}`,
+          "Reached 99.6% accuracy on a 50-word vocabulary on day one; a separate study decoded two languages." +
+          cite(["speech-fast-nejm", "speech-bilingual"]),
       },
     ],
   },
   {
     kicker: "Therapeutic neurotech",
-    title: "Closed-loop therapy has the strongest long-run evidence base",
+    title: "Closed-loop therapy has years of evidence",
     body:
-      `<p>If you want the least speculative branch of neurotech, the literature points first to disease-specific neuromodulation rather than to consumer mind-reading. Responsive epilepsy therapy already has long-term outcomes, physician workflows, and a clearer reimbursement story than most frontier BCI programs.${cite(["rns-nine-year", "neuropace-home"])}</p>
-       <p>This is why companies like NeuroPace, INBRAIN, Motif, Cala, Neuspera, and Salvia matter so much. They are not chasing generic sci-fi capability. They are trying to sense and modulate specific circuits with concrete endpoints, which is much closer to how the medical system actually adopts new tools.${cite(["dbs-biomarkers", "closed-loop-onchip", "cala-home", "inbrain-home", "motif-home", "neuspera-home", "salvia-home"])}</p>`,
+      "<p>Disease-specific stimulation has long-term outcomes and clinical workflows that most frontier BCIs still lack." +
+      cite(["rns-nine-year", "dbs-biomarkers"]) +
+      "</p>",
     papers: [
       {
         year: "2020",
         journal: "Neurology",
         title: "Nine-year RNS follow-up in focal epilepsy",
         takeaway:
-          `Reported a 75% median seizure reduction at nine years, a 73% responder rate, and meaningful periods of seizure freedom in a subset of patients. That is not concept-art evidence. It is durable clinical evidence.${cite(["rns-nine-year"])}`,
+          "Reported a 75% median seizure reduction at nine years and a 73% responder rate." +
+          cite(["rns-nine-year"]),
       },
       {
         year: "2019",
         journal: "Nature Reviews Neurology",
         title: "Biomarkers for closed-loop DBS",
         takeaway:
-          `Clarified that the next generation of stimulation systems should key off measurable disease biomarkers instead of delivering fixed pulses on a blind schedule.${cite(["dbs-biomarkers"])}`,
+          "Argued that stimulation should respond to measurable biomarkers, not a fixed schedule." +
+          cite(["dbs-biomarkers"]),
       },
       {
         year: "2021",
         journal: "IEEE TBCAS",
         title: "Closed-loop neural prostheses with on-chip intelligence",
         takeaway:
-          `Framed low-latency detection and embedded machine learning as practical requirements for real closed-loop devices, not optional extras.${cite(["closed-loop-onchip"])}`,
+          "Defined fast detection and on-device learning as practical closed-loop requirements." +
+          cite(["closed-loop-onchip"]),
       },
     ],
   },
   {
     kicker: "Interface routes",
-    title: "Access path is not a footnote. It is the product strategy.",
+    title: "The access path shapes the product",
     body:
-      `<p>The literature keeps reinforcing that surgical route, tissue proximity, and workflow burden are inseparable from product viability. Intracortical systems can deliver richer signals, but surface and endovascular approaches may win on who can implant them, where they can be deployed, and how much risk patients will tolerate.${cite(["nature-endo", "endo-review", "speech-avatar"])}</p>
-       <p>This is the deeper logic behind why Synchron, Precision, Neuralink, and Paradromics do not look like slight variations of the same company. They are making different bets about what the nervous system should touch and what a realistic care pathway can support.${cite(["jama-stentrode", "precision-home", "neuralink-home", "paradromics-home", "speech-imagined-commbiol"])}</p>`,
+      "<p>Signal quality, surgical risk, and clinical workflow change with where—and how—the device touches the nervous system." +
+      cite(["nature-endo", "jama-stentrode"]) +
+      "</p>",
     papers: [
       {
         year: "2016",
         journal: "Nature Biotechnology",
         title: "Foundational endovascular stent-electrode array paper",
         takeaway:
-          `Established the idea that useful neural interfaces might be delivered through blood vessels rather than open cortical surgery.${cite(["nature-endo"])}`,
+          "Established blood vessels as a route for neural interfaces." +
+          cite(["nature-endo"]),
       },
       {
         year: "2020",
         journal: "Neurosurgical Focus",
         title: "Systematic review of endovascular arrays",
         takeaway:
-          `Reviewed the endovascular route as a serious minimally invasive BCI path instead of a one-off technical curiosity.${cite(["endo-review"])}`,
+          "Assessed endovascular arrays as a serious minimally invasive path." +
+          cite(["endo-review"]),
       },
       {
         year: "2021",
         journal: "Communications Biology",
         title: "Imagined speech from minimally invasive recordings",
         takeaway:
-          `Showed that minimally invasive recordings can support real-time speech synthesis, strengthening the middle-path thesis between scalp signals and penetrating arrays.${cite(["speech-imagined-commbiol"])}`,
+          "Used minimally invasive recordings for real-time speech synthesis." +
+          cite(["speech-imagined-commbiol"]),
       },
       {
         year: "2023",
         journal: "JAMA Neurology",
         title: "Fully implanted endovascular BCI safety study",
         takeaway:
-          `Provided one of the clearest published clinical safety anchors for the endovascular commercial route that Synchron is pursuing.${cite(["jama-stentrode"])}`,
+          "Published a four-patient safety study of a fully implanted endovascular BCI." +
+          cite(["jama-stentrode"]),
       },
     ],
   },
   {
     kicker: "Non-invasive and ultrasound",
-    title: "The low-burden frontier is real, but its evidence is still thinner",
+    title: "Lower burden, thinner evidence",
     body:
-      `<p>There is good reason investors and founders keep returning to non-invasive systems: they are easier to distribute, easier to trial, and potentially much easier to live with. The problem is that lower burden does not automatically create enough useful signal or stimulation precision for serious daily value.${cite(["bci-trends-review", "neurable-home", "cognixion-home"])}</p>
-       <p>Ultrasound is especially worth watching because it implies different physics and potentially deeper access without penetrating tissue, which is why Forest and Nudge matter conceptually. But the literature still looks more like an active translational research frontier than a mature human product stack.${cite(["forest-home", "nudge-reported", "ultrasound-acoustoelectric"])}</p>`,
+      "<p>Non-invasive systems are easier to try, but useful signal and precise stimulation remain harder to prove. Ultrasound is promising and still early." +
+      cite(["bci-trends-review", "ultrasound-acoustoelectric"]) +
+      "</p>",
     papers: [
       {
         year: "2023",
         journal: "Brain Informatics",
         title: "Field review on BCI trends and threats",
         takeaway:
-          `Summarized recurring limits in non-invasive and broader BCI systems: noisy acquisition, user variability, calibration burden, and threat models around security and privacy.${cite(["bci-trends-review"])}`,
+          "Summarized recurring limits: noisy signals, variable users, calibration, security, and privacy." +
+          cite(["bci-trends-review"]),
       },
       {
         year: "2026",
         journal: "Nature Communications",
         title: "In vivo acoustoelectric neuromodulation study",
         takeaway:
-          `Useful as a mechanism-level reminder that ultrasound neuromodulation research is moving, but still sits earlier on the evidence ladder than approved or long-followed implant therapies.${cite(["ultrasound-acoustoelectric"])}`,
+          "Shows the mechanism is moving, but human product evidence remains early." +
+          cite(["ultrasound-acoustoelectric"]),
       },
     ],
   },
   {
     kicker: "Durability and governance",
-    title: "The literature is shifting from possibility questions to survivability questions",
+    title: "Can it survive years of use?",
     body:
-      `<p>The field no longer needs to prove only that neural systems can work once in a controlled setting. The harder question is whether they can stay useful across months and years while tolerating signal drift, changing models, evolving hardware generations, and the ordinary mess of real care or everyday life.${cite(["speech-fast-nejm", "forever-access", "bci-trends-review"])}</p>
-       <p>That is why governance papers belong next to engineering papers. Neurotech users can become structurally dependent on a vendor for access, maintenance, privacy, and upgrades in a way that ordinary app users do not. As the hardware improves, these questions become more urgent, not less.${cite(["forever-access", "bci-regulation"])}</p>`,
+      "<p>Long-term value depends on maintenance, model changes, privacy, and continued access when a vendor or device changes." +
+      cite(["forever-access", "bci-regulation"]) +
+      "</p>",
     papers: [
       {
         year: "2024",
         journal: "arXiv preprint",
         title: "Towards Forever Access for implanted BCIs",
         takeaway:
-          `Pushes the field to think about continuity of care, device maintenance, interoperability, and what happens if a company disappears while a person still depends on its implant.${cite(["forever-access"])}`,
+          "Asks who maintains an implant—and access to it—if a vendor disappears." +
+          cite(["forever-access"]),
       },
       {
         year: "2025",
         journal: "arXiv preprint",
         title: "Regulating next-generation implantable BCIs",
         takeaway:
-          `Frames privacy, autonomy, identity, and lock-in as present design and policy problems rather than distant future hypotheticals.${cite(["bci-regulation"])}`,
+          "Treats privacy, autonomy, identity, and lock-in as present design problems." +
+          cite(["bci-regulation"]),
       },
     ],
   },
@@ -1893,15 +1891,6 @@ const $ = (selector) => document.querySelector(selector);
 function renderList(target, items, template) {
   const root = $(target);
   root.innerHTML = items.map(template).join("");
-}
-
-function renderSignalCards() {
-  renderList("#signal-strip", signalCards, (item) => `
-    <article class="signal-card">
-      <h3>${item.title}</h3>
-      <p>${item.body}</p>
-    </article>
-  `);
 }
 
 function renderFieldBrief() {
@@ -2275,16 +2264,8 @@ function companyModalHtml(company) {
     </div>
     <div class="dossier-grid">
       <section class="dossier-block">
-        <h3>Thesis</h3>
-        <p>${company.dossier.thesis}</p>
-      </section>
-      <section class="dossier-block">
         <h3>How The Product Works</h3>
         <p>${company.dossier.howItWorks}</p>
-      </section>
-      <section class="dossier-block dossier-block--wide">
-        <h3>Why It Matters</h3>
-        <p>${company.dossier.whyItMatters}</p>
       </section>
       <section class="dossier-block dossier-block--wide">
         <h3>Current State</h3>
@@ -2293,10 +2274,6 @@ function companyModalHtml(company) {
       <section class="dossier-block">
         <h3>Deployment Reality</h3>
         <p>${company.dossier.deployment}</p>
-      </section>
-      <section class="dossier-block">
-        <h3>Competitive Frame</h3>
-        <p>${company.dossier.competitiveFrame}</p>
       </section>
       <section class="dossier-block">
         <h3>Main Bottlenecks</h3>
@@ -2311,10 +2288,6 @@ function companyModalHtml(company) {
       <section class="dossier-block dossier-block--wide">
         <h3>What Would Prove The Case</h3>
         <p>${company.dossier.proofNeeded}</p>
-      </section>
-      <section class="dossier-block dossier-block--wide">
-        <h3>What To Watch Next</h3>
-        <p>${company.dossier.watchFor}</p>
       </section>
     </div>
   `;
@@ -2453,7 +2426,6 @@ function setupSectionSceneMotion() {
 
 function init() {
   renderFieldBrief();
-  renderSignalCards();
   renderPrimer();
   renderConcepts();
   renderComparison();
