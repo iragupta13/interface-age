@@ -2296,25 +2296,36 @@ function companyModalHtml(company) {
 function setupDossiers() {
   const modal = $("#company-modal");
   const content = $("#company-modal-content");
-
-  document.addEventListener("click", (event) => {
+  let opener = null;
+  function openCompany(id) {
+    const company = companies.find(item => item.id === id);
+    if (!company) return;
+    content.innerHTML = companyModalHtml(company) + `<div class="dossier-share"><button type="button" id="copy-dossier">Copy dossier link ↗</button><span id="share-status" role="status"></span></div>`;
+    if (!modal.open) modal.showModal();
+    $("#copy-dossier").addEventListener("click", async () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set("company", company.id); url.hash = "market-map";
+      try { await navigator.clipboard.writeText(url.href); $("#share-status").textContent = "Link copied"; }
+      catch { window.prompt("Copy this dossier link", url.href); }
+    });
+  }
+  document.addEventListener("click", event => {
     const trigger = event.target.closest("[data-company]");
     if (!trigger) return;
-    const company = companies.find((item) => item.id === trigger.dataset.company);
-    if (!company) return;
-    content.innerHTML = companyModalHtml(company);
-    modal.showModal();
+    opener = trigger;
+    openCompany(trigger.dataset.company);
+    const url = new URL(window.location.href); url.searchParams.set("company", trigger.dataset.company);
+    history.replaceState(null, "", url);
   });
-
-  modal.addEventListener("click", (event) => {
+  modal.addEventListener("close", () => {
+    const url = new URL(window.location.href); url.searchParams.delete("company"); history.replaceState(null, "", url);
+    opener?.focus();
+  });
+  modal.addEventListener("click", event => {
     const rect = modal.getBoundingClientRect();
-    const inside =
-      rect.top <= event.clientY &&
-      event.clientY <= rect.top + rect.height &&
-      rect.left <= event.clientX &&
-      event.clientX <= rect.left + rect.width;
-    if (!inside) modal.close();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) modal.close();
   });
+  openCompany(new URLSearchParams(window.location.search).get("company"));
 }
 
 function setupRailHighlight() {
