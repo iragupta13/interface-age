@@ -1,3 +1,4 @@
+const expansion = window.INTERFACE_EXPANSION || { sources: [], companies: [] };
 const sources = [
   {
     id: "cala-home",
@@ -304,6 +305,8 @@ const sources = [
       "Used to show that ultrasound neuromodulation remains an active but still earlier-stage research frontier.",
   },
 ];
+
+sources.push(...expansion.sources);
 
 const sourceNumber = new Map(sources.map((source, index) => [source.id, index + 1]));
 
@@ -954,21 +957,21 @@ const landscapeColumns = [
   {
     key: "targeted-implant",
     label: "Targeted implant",
-    note: "Localized implants or vascular paths aimed at reducing burden versus open-brain access.",
+    note: "Targeted nerve implants and endovascular recording systems; distinct procedures grouped for navigation.",
   },
   {
     key: "deep-implant",
     label: "Intracortical / sensory implant",
-    note: "More direct access to neural tissue or sensory pathways, with the highest procedural burden.",
+    note: "Penetrating cortex, deep-brain stimulation, or sensory implants. Surgical routes and risks differ substantially.",
   },
 ];
 
 const pathwayBurden = {
-  noninvasive: "Lowest burden",
-  peripheral: "Low burden",
-  surface: "Medium burden",
-  "targeted-implant": "Higher burden",
-  "deep-implant": "Highest burden",
+  noninvasive: "External sensing",
+  peripheral: "External therapy",
+  surface: "Cortical surface",
+  "targeted-implant": "Target-specific access",
+  "deep-implant": "Implanted neural access",
 };
 
 const companyDetails = {
@@ -1455,7 +1458,7 @@ const companySignals = {
   science: { key: "human-clinical", stage: "Pivotal clinical", evidence: "Peer-reviewed human outcomes" },
   inbrain: { key: "early-human", stage: "Early human", evidence: "Breakthrough designation and first implant" },
   motif: { key: "research", stage: "Clinical readiness", evidence: "Registry and pre-commercial program" },
-  nudge: { key: "research", stage: "Research / stealth", evidence: "Sparse primary disclosure" },
+  nudge: { key: "research", stage: "Research development", evidence: "Primary technical disclosure; product efficacy remains to be established" },
   cognixion: { key: "human-clinical", stage: "Human studies", evidence: "Assistive research and partner programs" },
   forest: { key: "research", stage: "Research platform", evidence: "Translational research; product path emerging" },
   blackrock: { key: "commercial", stage: "Established platform", evidence: "Long-running human research infrastructure" },
@@ -1466,8 +1469,10 @@ const companySignals = {
   neurable: { key: "commercial", stage: "Early market", evidence: "Consumer product and research platform" },
 };
 
+companies.push(...expansion.companies);
+
 companies.forEach((company) => {
-  company.signal = companySignals[company.id] || {
+  company.signal = company.signal || companySignals[company.id] || {
     key: "research",
     stage: "Research",
     evidence: "Public evidence still developing",
@@ -1476,6 +1481,12 @@ companies.forEach((company) => {
     company.filterTags.push(company.signal.key);
   }
 });
+
+
+const nudgeEntry = companies.find(company => company.id === "nudge");
+Object.assign(nudgeEntry, { reviewed: "2026-09-08", sourceIds: ["nudge-primary"], summary: "Nudge is developing phased-array ultrasound to reach brain targets without an implant. Its initial device is MRI-compatible; everyday use remains an ambition.", traction: "Public technical development program" });
+nudgeEntry.dossier.currentState = "The April 2025 company account describes Nudge Zero, an MRI-compatible phased-array system. It separates this research architecture from a future portable device and describes safety and efficacy as milestones to establish.";
+nudgeEntry.dossier.milestones = [`April 2025: publication of the company’s technical approach and initial device architecture.${cite(["nudge-primary"])}`];
 
 const fieldBrief = [
   {
@@ -2019,6 +2030,7 @@ function renderMarketMap() {
     <div class="landscape-toolbar" aria-label="Filter landscape by first job">
       <div>
         <p class="landscape-toolbar__eyebrow">Explore by first job</p>
+        <label class="company-search">Find a company or technology<input id="company-search" type="search" placeholder="Try speech, EEG, or an organization…" /></label>
         <div class="landscape-filters">
           <button type="button" class="filter-chip is-active" data-landscape-filter="all" aria-pressed="true">All markets</button>
           ${landscapeRows.map((row) => `<button type="button" class="filter-chip" data-landscape-filter="${row.key}" aria-pressed="false">${row.label}</button>`).join("")}
@@ -2030,7 +2042,7 @@ function renderMarketMap() {
       <div class="landscape-matrix">
         <div class="landscape-axis">
           <span>First job ↓</span>
-          <strong>Procedure burden →</strong>
+          <strong>Interface route →</strong>
         </div>
         ${landscapeColumns.map((column, index) => `
           <div class="landscape-column-head landscape-column-head--${column.key}">
@@ -2077,10 +2089,10 @@ function renderMarketMap() {
   $("#market-legend").innerHTML = `
     <div class="market-legend__items">
       ${[
-          { label: "Preclinical", color: "#7c8ece" },
+          { label: "Research / investigational", color: "#7c8ece" },
           { label: "Early human", color: "#b88b95" },
           { label: "Regulated clinical", color: "#cea164" },
-          { label: "Commercial", color: "#71a8a8" },
+          { label: "Marketed product / platform", color: "#71a8a8" },
         ].map((item) => `
             <div class="legend-item">
               <span class="legend-dot" style="background:${item.color}"></span>
@@ -2092,8 +2104,8 @@ function renderMarketMap() {
       <strong>How to read the map</strong>
       <p>
         Horizontal position is interface burden, not a quality ranking. Dots show
-        maturity: blue is preclinical, rose early human, copper regulated clinical,
-        and teal commercial. Select a company to open its dossier.
+        maturity: blue is research or investigational, rose early human, copper clinical,
+        and teal a marketed product or research platform. A marketed EEG board is not equivalent to an approved therapy. Select a company to open its dossier.
       </p>
     </div>
   `;
@@ -2102,26 +2114,23 @@ function renderMarketMap() {
 function setupLandscapeFilters() {
   const controls = Array.from(document.querySelectorAll("[data-landscape-filter]"));
   const rows = Array.from(document.querySelectorAll("[data-landscape-row]"));
-  const summary = $("#landscape-summary");
-
-  controls.forEach((control) => {
-    control.addEventListener("click", () => {
-      const filter = control.dataset.landscapeFilter;
-      controls.forEach((item) => {
-        const active = item === control;
-        item.classList.toggle("is-active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
-      rows.forEach((row) => {
-        row.hidden = filter !== "all" && row.dataset.landscapeRow !== filter;
-      });
-      const visibleCompanies = filter === "all"
-        ? companies.length
-        : companies.filter((company) => company.landscape?.row === filter).length;
-      const label = landscapeRows.find((row) => row.key === filter)?.label || "all markets";
-      summary.textContent = `${visibleCompanies} ${visibleCompanies === 1 ? "company" : "companies"} · ${label}`;
+  const search = document.querySelector("#company-search");
+  const summary = document.querySelector("#landscape-summary");
+  let selected = "all";
+  function update() {
+    const query = search.value.trim().toLowerCase();
+    const matches = companies.filter(company => (selected === "all" || company.landscape.row === selected) && [company.name, company.product.device, company.product.mode, company.product.firstJob, company.product.touchpoint].join(" ").toLowerCase().includes(query));
+    const ids = new Set(matches.map(company => company.id));
+    rows.forEach(row => {
+      row.hidden = !matches.some(company => company.landscape.row === row.dataset.landscapeRow);
+      row.querySelectorAll("[data-company]").forEach(button => { button.hidden = !ids.has(button.dataset.company); });
     });
-  });
+    controls.forEach(control => { const active = control.dataset.landscapeFilter === selected; control.classList.toggle("is-active", active); control.setAttribute("aria-pressed", String(active)); });
+    summary.textContent = matches.length ? `${matches.length} of ${companies.length} companies · ${selected === "all" ? "all markets" : landscapeRows.find(row => row.key === selected).label}` : "No matching companies. Try a broader term or choose All markets.";
+  }
+  controls.forEach(control => control.addEventListener("click", () => { selected = control.dataset.landscapeFilter; update(); }));
+  search.addEventListener("input", update);
+  update();
 }
 
 function renderUseCases() {
@@ -2211,6 +2220,7 @@ function renderSources() {
         <h3>
           <a href="${source.url}" target="_blank" rel="noreferrer">${source.title}</a>
         </h3>
+        <p class="source-type">${source.type}</p><p>${source.note || ""}</p>
       </div>
     </article>
   `);
@@ -2224,9 +2234,10 @@ function companyModalHtml(company) {
         <h2>${company.name}</h2>
       </div>
       <p class="dossier-summary">${company.summary}</p>
+      <p class="dossier-review">${company.reviewed ? `Source review: ${company.reviewed}` : "Original research snapshot: July 2026"}</p>
     </div>
     <div class="dossier-intro">
-      ${productMediaHtml(company, "modal")}
+      ${company.media?.src ? productMediaHtml(company, "modal") : `<div class="dossier-route"><span>${company.product.mode}</span><strong>${company.product.device}</strong><p>${company.product.touchpoint}</p></div>`}
       <div class="dossier-facts">
         <div>
           <span>Maturity</span>
@@ -2269,7 +2280,7 @@ function companyModalHtml(company) {
       </section>
       <section class="dossier-block dossier-block--wide">
         <h3>Current State</h3>
-        <p>${company.dossier.currentState}</p>
+        <p>${company.dossier.currentState}${cite(company.sourceIds || [])}</p>
       </section>
       <section class="dossier-block">
         <h3>Deployment Reality</h3>
@@ -2280,10 +2291,8 @@ function companyModalHtml(company) {
         <p>${company.dossier.bottlenecks}</p>
       </section>
       <section class="dossier-block">
-        <h3>Key Milestones</h3>
-        <ul class="dossier-list">
-          ${company.dossier.milestones.map((item) => `<li>${item}</li>`).join("")}
-        </ul>
+        <h3>Competitive context</h3><p>${company.dossier.competitiveFrame || company.dossier.whyItMatters}</p>
+        ${company.dossier.milestones.length ? `<h3>Key Milestones</h3><ul class="dossier-list">${company.dossier.milestones.map(item => `<li>${item}</li>`).join("")}</ul>` : ""}
       </section>
       <section class="dossier-block dossier-block--wide">
         <h3>What Would Prove The Case</h3>
@@ -2310,6 +2319,7 @@ function setupDossiers() {
     });
   }
   document.addEventListener("click", event => {
+    if (event.target.closest('a[href^="#src-"]') && modal.open) { modal.close(); return; }
     const trigger = event.target.closest("[data-company]");
     if (!trigger) return;
     opener = trigger;
@@ -2435,6 +2445,46 @@ function setupSectionSceneMotion() {
   });
 }
 
+function setupCompanyCompare() {
+  const first = document.querySelector('#compare-a');
+  const second = document.querySelector('#compare-b');
+  const sorted = [...companies].sort((a,b) => a.name.localeCompare(b.name));
+  for (const select of [first, second]) {
+    for (const company of sorted) { const option = document.createElement('option'); option.value = company.id; option.textContent = company.name; select.append(option); }
+  }
+  first.value = 'neuralink'; second.value = 'synchron';
+  const render = () => {
+    const a = companies.find(c => c.id === first.value), b = companies.find(c => c.id === second.value);
+    const target = document.querySelector('#company-comparison');
+    if (a.id === b.id) { target.innerHTML = '<p class="compare-empty">Choose two different companies to compare their approaches.</p>'; return; }
+    const rows = [
+      ['Named system', c => c.product.device], ['First job', c => c.product.firstJob],
+      ['Biological touchpoint', c => c.product.touchpoint], ['Procedure', c => c.product.procedure],
+      ['Read / write', c => c.product.mode], ['Product stage', c => c.signal.stage],
+      ['Evidence signal', c => c.signal.evidence], ['What to watch', c => c.dossier.proofNeeded],
+      ['Research snapshot', c => c.reviewed || 'July 2026'],
+    ];
+    target.innerHTML = `<table class="company-compare-table"><thead><tr><th scope="col">Compare</th><th scope="col"><button data-company="${a.id}">${a.name} ↗</button></th><th scope="col"><button data-company="${b.id}">${b.name} ↗</button></th></tr></thead><tbody>${rows.map(([label, value]) => `<tr><th scope="row">${label}</th><td>${value(a)}</td><td>${value(b)}</td></tr>`).join('')}</tbody></table>`;
+  };
+  first.addEventListener('change',render); second.addEventListener('change',render); render();
+}
+
+function renderGuideGlossary() {
+  const terms = [
+    ['EEG', 'Electroencephalography records electrical activity using electrodes on the scalp. Signal quality and artifact handling are part of the experiment.', 'emotiv-epoc'],
+    ['ECoG', 'Electrocorticography records from electrodes on the cortical surface. It occupies a different access route from scalp EEG or penetrating electrodes.', 'neurosoft-interface'],
+    ['DBS', 'Deep brain stimulation delivers electrical stimulation through implanted leads. Sensing-enabled adaptive systems can adjust therapy using recorded activity.', 'medtronic-adaptive'],
+    ['FES', 'Functional electrical stimulation activates muscles through electrical pulses. A rehabilitation BCI can couple this movement to detected motor imagery.', 'gtec-recoverix'],
+    ['tES', 'Transcranial electrical stimulation applies current through scalp electrodes. Research systems can combine stimulation with EEG recording.', 'neuroelectrics-starstim'],
+    ['Phased-array ultrasound', 'Multiple ultrasound elements use controlled timing to steer a focus. Nudge describes an MRI-compatible architecture for studying this approach.', 'nudge-primary'],
+    ['Closed loop', 'A system measures a signal and uses it to change its next action. In adaptive DBS, sensing and stimulation are parts of the same therapy loop.', 'medtronic-adaptive'],
+    ['Channel', 'An acquisition channel is a measurement stream. More channels describe hardware capacity; they do not by themselves establish better outcomes.', 'openbci-cyton'],
+    ['Motor imagery', 'Imagining a movement without necessarily performing it. Some rehabilitation BCIs detect associated EEG patterns and deliver contingent feedback.', 'gtec-recoverix'],
+    ['Intended use', 'The specific purpose and context of a device matter when interpreting regulatory claims. Authorization for one use does not establish every proposed application.', 'fda-510k'],
+  ];
+  document.querySelector('#glossary-grid').innerHTML = terms.map(([term, definition, source]) => `<article><h3>${term}</h3><p>${definition}${cite([source])}</p></article>`).join('');
+}
+
 function init() {
   renderFieldBrief();
   renderPrimer();
@@ -2449,6 +2499,10 @@ function init() {
   renderSources();
   renderEcosystem();
   setupLandscapeFilters();
+  setupCompanyCompare();
+  renderGuideGlossary();
+  document.querySelector("#company-count").textContent = `${companies.length} company dossiers`;
+  document.querySelector("#source-count").textContent = `${sources.length} linked sources`;
   setupDossiers();
   setupRailHighlight();
   setupRevealMotion();

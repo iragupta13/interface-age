@@ -34,9 +34,9 @@
               The brain is becoming an interface. Here’s your map of who’s building it, what works, and what’s still out of reach.
             </p>
             <div class="hero-meta" aria-label="Guide metadata">
-              <span>Updated July 2026</span>
-              <span>38 linked sources</span>
-              <span>16 company dossiers</span>
+              <span>Expanded September 2026</span>
+              <span id="source-count">50 linked sources</span>
+              <span id="company-count">24 company dossiers</span>
             </div>
             <a class="hero-enter" href="#market-map">
               Explore the field <span aria-hidden="true">↓</span>
@@ -72,6 +72,8 @@
         <a href="#bottlenecks">Bottlenecks</a>
         <a href="#next-steps" class="chapter-rail__minor">Next Steps</a>
         <a href="#endgame">Endgame</a>
+        <a href="#evidence-guide">Evidence guide</a>
+        <a href="#glossary">Glossary</a>
         <a href="#sources">Sources</a>
       </div>
     </nav>
@@ -190,7 +192,7 @@
           <div class="chapter-layout">
             <div class="chapter-copy">
               <p class="lead">
-                Compare companies by interface path, first job, and evidence. Read left to right as the procedure gets harder, then open a company for the sources behind it.
+                Compare companies by interface path, first job, and evidence. Compare interface routes, then open a company for the sources behind it. These routes are categories, not a universal risk or quality ranking.
               </p>
             </div>
             <aside class="chapter-aside">
@@ -221,6 +223,12 @@
             <div class="market-map" id="market-map-plot"></div>
             <div class="market-legend" id="market-legend"></div>
           </div>
+          <section class="compare-section" aria-labelledby="compare-heading">
+            <p class="section-kicker">Two approaches, side by side</p><h3 id="compare-heading">Compare the actual product.</h3>
+            <p>Compare a named system and intended use. A company can have several programs at different stages.</p>
+            <div class="compare-selectors"><label>First company<select id="compare-a"></select></label><label>Second company<select id="compare-b"></select></label></div>
+            <div class="compare-table-wrap" id="company-comparison" aria-live="polite"></div>
+          </section>
           <section class="ecosystem-section" aria-labelledby="ecosystem-title">
             <div class="ecosystem-section__head">
               <p class="section-kicker">Who else matters</p>
@@ -367,9 +375,22 @@
           </div>
         </section>
 
+        <section class="chapter" id="evidence-guide">
+          <div class="chapter-heading"><p class="chapter-number">12</p><h2>Read the evidence, not the headline.</h2></div>
+          <p class="chapter-intro">A useful way to evaluate a neurotechnology claim: name the device, the population, the task, and the length of follow-up.</p>
+          <div class="evidence-questions">
+            <details open><summary>What did the regulator actually authorize?</summary><p>A Breakthrough designation can accelerate interaction and review; it does not itself authorize marketing. A 510(k) evaluates substantial equivalence for a particular intended use. An investigational authorization concerns a study. Read the exact device and indication rather than treating every FDA-related announcement as a product approval. <a href="https://www.fda.gov/medical-devices/how-study-and-market-your-device/breakthrough-devices-program" target="_blank" rel="noreferrer">FDA: Breakthrough program ↗</a> · <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm" target="_blank" rel="noreferrer">FDA: 510(k) ↗</a> · <a href="https://www.fda.gov/medical-devices/investigational-device-exemption-ide/faqs-about-investigational-device-exemption" target="_blank" rel="noreferrer">FDA: IDE ↗</a></p></details>
+            <details><summary>Did the person gain useful function?</summary><p>Ask what the user could do before and after. A cursor metric, a classification score, and independent communication answer different questions. Look for task completion, errors, assistance required, and outcomes that matter outside the demonstration.</p></details>
+            <details><summary>How much human support was hidden?</summary><p>Our evaluation lens: count setup, calibration, technician time, training, troubleshooting, and caregiver involvement. A strong signal in a supervised session does not by itself establish an independent home-use product.</p></details>
+            <details><summary>Did the result last?</summary><p>Separate the best session from performance across weeks or months. Look for withdrawals, adverse events, signal drift, re-training, repairs, and outcomes after the study team steps back. A durable interface is also a support and maintenance system.</p></details>
+            <details><summary>Is a commercial product also a proven therapy?</summary><p>Not necessarily. A company may sell EEG research hardware or consumer software without a therapeutic indication. For example, OpenBCI explicitly distinguishes Cyton from a medical diagnostic device. Compare the claimed use and evidence, not merely whether a checkout page exists. <a href="https://shop.openbci.com/products/cyton-biosensing-board-8-channel" target="_blank" rel="noreferrer">Cyton product scope ↗</a></p></details>
+            <details><summary>How should I use this guide?</summary><p>This is a curated field guide, not an exhaustive registry or clinical recommendation. The original 16-company research snapshot dates to July 2026. Eight new dossiers and the Nudge primary-source update were reviewed on September 8, 2026. Company documents describe products and claims; questions about deployment and proof are editorial analysis. Regulatory scope and availability vary by country and indication.</p></details>
+          </div>
+        </section>
+        <section class="chapter" id="glossary"><div class="chapter-heading"><p class="chapter-number">13</p><h2>A working vocabulary.</h2></div><div class="glossary-grid" id="glossary-grid"></div></section>
         <section class="chapter chapter--sources" id="sources">
           <div class="chapter-heading">
-            <p class="chapter-number">12</p>
+            <p class="chapter-number">14</p>
             <h2>Sources</h2>
           </div>
           <p class="chapter-intro">
@@ -387,6 +408,7 @@
       <div class="company-modal__content" id="company-modal-content"></div>
     </dialog>
 
-    <script src="app.js?v=26"></script>
+    <script src="expansion.js?v=1"></script>
+    <script src="app.js?v=27"></script>
   </body>
 </html>
